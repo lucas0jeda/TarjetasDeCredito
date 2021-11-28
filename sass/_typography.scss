@@ -1,0 +1,65 @@
+h1 {
+    font-size: 32px;
+    line-height: 36px;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 32.4px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 28.6px;
+}
+
+h4 {
+    font-size: 16px;
+    line-height: 20.8px;
+}
+
+h5 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h6 {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.xs-font-size {
+    font-size: $xs-font-size !important;
+}
+
+.sm-font-size {
+    font-size: $default-font-size !important;
+}
+
+.md-font-size {
+    font-size: $md-font-size !important;
+}
+
+.lg-font-size {
+    font-size: $lg-font-size !important;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.lbl-bold {
+    font-weight: bold;
+}
+
+.spacer-50 {
+    height: 50px;
+}

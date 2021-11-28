@@ -1,0 +1,21 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: $default-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: $default-font-size;
+    color: $default-color;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+}

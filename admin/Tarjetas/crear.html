@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
+    <title>Nueva Tarjeta</title>
+</head>
+<body>
+    <header id="header">
+    </header>
+    <div class="container contenedor">
+        <p class="badge bg-primary text-wrap">Los campos marcados con un <span class="fw-bold fs-5"> * </span> son obligatorios</p>
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre *</label>
+                <input type="text" name="Nombre_Sello" id="nombre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="emisor" class="form-label">Emisor *</label>
+                <select name="Emisor" id="emisor" class="form-control" required>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="sello" class="form-label">Sello *</label>
+                <select name="Sello" id="sello" class="form-control" required>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo *</label>
+                <select name="Tipo" id="tipo" class="form-control" required>
+                    <option value="" selected disabled>---</option>
+                    <option value="Credito">Credito</option>
+                    <option value="Debito">Debito</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="uso" class="form-label">Uso *</label>
+                <select name="Uso" id="uso" class="form-control" required>
+                    <option value="" selected disabled>---</option>
+                    <option value="Internacional">Internacional</option>
+                    <option value="Regional">Regional</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="costo_de_emision" class="form-label">Costo de Emision</label>
+                <textarea name="Costo_De_Emision" id="costo_de_emision" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="costo_primer_anio" class="form-label">Costo primer Año</label>
+                <textarea name="Costo_Primer_Anio" id="costo_primer_anio" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="costo_renovacion" class="form-label">Costo de Emision</label>
+                <textarea name="Costo_Renovacion" id="costo_renovacion" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="costo_adicionales" class="form-label">Costo Adicionales</label>
+                <textarea name="Costo_Adicional" id="costo_adicionales" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="comision_compras_exterior" class="form-label">Comision por compras en el exterior</label>
+                <textarea name="Comision_Compras_Exterior" id="comision_compras_exterior" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="pago" class="form-label">Pago</label>
+                <textarea name="Pago" id="pago" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="cashback" class="form-label">Cashback</label>
+                <select name="Cashback" id="cashback" class="form-control">
+                    <option value="" selected disabled>---</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="cashback" class="form-label">Programa de puntos</label>
+                <select name="Programa_De_Puntos" id="programa_de_puntos" class="form-control">
+                    <option value="" selected disabled>---</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="limite_gasto_maximo" class="form-label">Limite de gasto maximo</label>
+                <textarea name="Limite_Gasto_Maximo" id="limite_gasto_maximo" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="intereses_cuotas">Intereses en cuotas</label>
+                <textarea name="Intereses_Cuotas" id="intereses_cuotas" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="cuenta_bancaria" class="form-label">Cuenta bancaria</label>
+                <textarea name="Cuenta_Bancaria" id="cuenta_bancaria" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="costo_envio_estado_de_cuenta" class="form-label">Costo envio estado de cuenta</label>
+                <textarea name="Costo_Envio_Estado_De_Cuenta" id="costo_envio_estado_de_cuenta" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="envio_estado_de_cuenta_email" class="form-label">Envio estado de cuenta por email</label>
+                <select name="EnvioEstadoDeCuentaEmail" id="envio_estado_de_cuenta_email" class="form-control">
+                    <option value="" selected disabled>---</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="adelanto_de_efectivo" class="form-label">Adelanto de efectivo</label>
+                <textarea name="AdelantoDeEfectivo" id="adelanto_de_efectivo" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="aumento_de_limite_por_viaje" class="form-label">Aumento de limite por viaje</label>
+                <textarea name="AumentoDeLimitePorViaje" id="aumento_de_limite_por_viaje" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="telefono_para_extravio" class="form-label">Telefono para extravio</label>
+                <textarea name="TelefonoParaExtravio" id="telefono_para_extravio" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="contactless" class="form-label">Contactlesso</label>
+                <select name="Contactless" id="contactless" class="form-control">
+                    <option value="" selected disabled>---</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="reimpresion_de_plastico" class="form-label">Reimpresion del plastico</label>
+                <textarea name="ReimpresionDePlastico" id="reimpresion_de_plastico" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="reimpresion_de_pin" class="form-label">Reimpresion del PIN</label>
+                <textarea name="ReimpresionDelPIN" id="reimpresion_de_pin" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="reemplazo_por_robo_extravio" class="form-label">Reemplazo por robo o extravio</label>
+                <textarea name="ReemplazoPorRoboOExtravio" id="reemplazo_por_robo_extravio" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="fecha_de_cierre" class="form-label">Fecha de cierre</label>
+                <textarea name="FechaDeCierre" id="fecha_de_cierre" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="cambio_fecha_de_cierre" class="form-label">Cambio fecha de cierre</label>
+                <textarea name="CambioFechaDeCierre" id="cambio_fecha_de_cierre" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen *</label>
+                <input type="text" name="Imagen" id="imagen" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="informacion_adicional" class="form-label">Informacion adicional</label>
+                <textarea name="InformacionAdicional" id="informacion_adicional" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <button type="submit" id="btnEnviar" class="btn btn-primary form-control">Enviar</button>
+        </form>
+    </div>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/layout.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/cards.js"></script>
+</body>
+</html>
