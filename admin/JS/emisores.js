@@ -9,17 +9,28 @@ $(document).ready(function (){
             break;
         case "http://localhost/TarjetasDeCredito/admin/Emisores/editar.html":
             if(sessionStorage.getItem("emisor")){
+                $("#imagen").change(function(){
+                    let file = this.files[0];
+                    console.log(URL.createObjectURL(file));
+                    $("#logoEmisor").attr("src", URL.createObjectURL(file));
+                })
                 cargarDatosEdicion(sessionStorage.getItem("emisor"));
                 $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    editEmisor();
+                    let validacion = validacion();
+                    if(validacion){
+                        editEmisor();
+                    }
                 });
             }
             break;
         case "http://localhost/TarjetasDeCredito/admin/Emisores/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                insertEmisor();
+                let validacion = validacion();
+                if(validacion){
+                    insertEmisor();
+                }
             });
             break;
     }
@@ -48,9 +59,9 @@ function getAllEmisores(){
                     output += `<tr>
                     <td>${data[i].id_emisor}</td>
                     <td>${data[i].nombre}</td>
-                    <td>${data[i].descripcion}</td>   
-                    <td><button type="button" class="btnEditar" value="${data[i].id_emisor}">Editar</button></td>
-                    <td><button type="button" class="btnEliminar" value="${data[i].id_emisor}">Eliminar</button></td>
+                    <td>${data[i].descripcion.slice(0, -450) + " ..."}</td>   
+                    <td><button type="button" class="btnEditar btn btn-primary" value="${data[i].id_emisor}">Editar</button></td>
+                    <td><button type="button" class="btnEliminar btn btn-primary" value="${data[i].id_emisor}">Eliminar</button></td>
                 <tr>`;
                 }
                 $('#dataEmisorBodyTable').html(output);
@@ -72,9 +83,13 @@ function cargarDatosEdicion(idEmisor){
             body: data
         }).then(response => response.json()).then(data => {
             if(typeof data === 'object'){
+                console.log(data);
                 $("#id").val(data.id_emisor);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
+                let src = "http://localhost/TarjetasDeCredito/images/emisorImg/logos/" + data.logo;
+                $("#logoEmisor").attr("src", src);
+                sessionStorage.setItem("logoActual", data.logo);
             }else{
                 console.log("error");
             }
@@ -89,15 +104,20 @@ function editEmisor(){
         let id = $("#id").val();
         let nombre = $("#nombre").val();
         let descripcion = $("#descripcion").val();
+        let imagen = document.getElementById("imagen").files[0];
+        let logoActual = sessionStorage.getItem("logoActual");
         const data = new FormData();
         data.append('ID', id);
         data.append('nombre', nombre);
         data.append('descripcion', descripcion);
+        data.append('imagen', imagen);
+        data.append("logoActual", logoActual);
         fetch('http://localhost/TarjetasDeCredito/app/emisores/updateEmisor', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
+                sessionStorage.removeItem("logoActual");
                 alert("Emisor editado con exito!");
                 window.location.replace("http://localhost/TarjetasDeCredito/admin/Emisores/");
             }else{
@@ -128,9 +148,11 @@ function deleteEmisor(idEmisor){
 function insertEmisor(){
     let nombre = $("#nombre").val();
     let descripcion = $("#descripcion").val();
+    let imagen = document.getElementById("imagen").files[0];
     const data = new FormData();
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
+    data.append('imagen', imagen);
     fetch('http://localhost/TarjetasDeCredito/app/emisores/insertEmisor', {
         method: "POST",
         body: data
@@ -142,4 +164,15 @@ function insertEmisor(){
             console.log("error");
         }
     });
+}
+
+function validacion(){
+    let retorno = false;
+    let nombre = $("#nombre").val();
+    let descripcion = $("#descripcion").val();
+    let imagen = $("#imagen").val();
+    if(nombre != "" && descripcion != "" && imagen != ""){
+        retorno = true;
+    }
+    return retorno;
 }

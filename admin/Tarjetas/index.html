@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
     <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
     <title>Tarjetas</title>
 </head>
 <body>
     <header id="header">
     </header>
-    <h1>Tarjetas</h1>
-    <button id="addCard">Nueva tarjeta</button>
-    <table class="table" id="dataCardTable">
-        <thead>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Emisor</th>
-        <th scope="col">Sello</th>
-        <th scope="col">Uso</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Eliminar</th>
-        </thead>
-        <tbody id="dataCardBodyTable">
+    <div class="container-fluid">
+        <h1 class="customH1">Tarjetas</h1>
+        <button id="addCard" class="btn btn-primary">Nueva tarjeta</button>
+        <table class="table tabla" id="dataCardTable">
+            <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Emisor</th>
+            <th scope="col">Sello</th>
+            <th scope="col">Uso</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+            </thead>
+            <tbody id="dataCardBodyTable">
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/layout.js"></script>

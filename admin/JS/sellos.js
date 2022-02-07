@@ -51,8 +51,8 @@ function getAllSellos(){
                         <td>${data[i].id_sello}</td>
                         <td>${data[i].nombre}</td>
                         <td>${data[i].descripcion}</td>   
-                        <td><button type="button" class="btnEditar" value="${data[i].id_sello}">Editar</button></td>
-                        <td><button type="button" class="btnEliminar" value="${data[i].id_sello}">Eliminar</button></td>
+                        <td><button type="button" class="btnEditar btn btn-primary" value="${data[i].id_sello}">Editar</button></td>
+                        <td><button type="button" class="btnEliminar btn btn-primary" value="${data[i].id_sello}">Eliminar</button></td>
                     <tr>`;
                     }
                     $('#dataSelloBodyTable').html(output);
@@ -78,8 +78,11 @@ function cargarDatosEdicion(idSello){
                 $("#id").val(data.id_sello);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
+                let src = "http://localhost/TarjetasDeCredito/images/sellosImg/" + data.logo;
+                $("#logoSello").attr("src", src);
+                sessionStorage.setItem("logoActual", data.logo);
             }else{
-                console.log("error")
+                console.log("error");
             }
         });
     }catch (e) {
@@ -92,15 +95,20 @@ function editSello(){
         let id = $("#id").val();
         let nombre = $("#nombre").val();
         let desc = $("#descripcion").val();
+        let imagen = document.getElementById("imagen").files[0];
+        let logoActual = sessionStorage.getItem("logoActual");
         const data = new FormData();
         data.append('ID', id);
         data.append('nombre', nombre);
         data.append('desc', desc);
+        data.append('imagen', imagen);
+        data.append("logoActual", logoActual);
         fetch('http://localhost/TarjetasDeCredito/app/sellos/updateSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
+                sessionStorage.removeItem("logoActual");
                 alert("Sello editado con exito!");
                 window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/");
             }else{
@@ -131,15 +139,16 @@ function deleteSello(id){
 function insertSello(){
     let nombre = $("#nombre").val();
     let descripcion = $("#descripcion").val();
+    let imagen = document.getElementById("imagen").files[0];
     const data = new FormData();
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
+    data.append('imagen', imagen);
     fetch('http://localhost/TarjetasDeCredito/app/sellos/insertSello', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
-            console.log("OK");
             alert("Sello Ingresada correctamente!");
             window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/");
         }else{

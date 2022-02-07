@@ -38,8 +38,8 @@ class EmisoresModel{
         return $result;
     }
 
-    public function update($id, $nombre, $descripcion){
-        $query = "UPDATE emisores SET nombre = '${nombre}', descripcion = '${descripcion}' WHERE id_emisor = ${id} ";
+    public function update($id, $nombre, $logo, $descripcion){
+        $query = "UPDATE emisores SET nombre = '${nombre}', descripcion = ${descripcion}, logo = '${logo}' WHERE id_emisor = ${id} ";
         $result = $this->db->query($query);
         return $result;
     }
@@ -50,8 +50,8 @@ class EmisoresModel{
         return $result;
     }
 
-    public function insert($nombre, $descripcion){
-        $query = "INSERT INTO emisores (nombre, logo, descripcion) VALUES ('${nombre}', '${nombre}.jpg', '${descripcion}')";
+    public function insert($nombre, $logo ,$descripcion){
+        $query = "INSERT INTO emisores (nombre, logo, descripcion) VALUES ('${nombre}', '${logo}', ${descripcion})";
         $result = $this->db->query($query);
         return $result;
     }

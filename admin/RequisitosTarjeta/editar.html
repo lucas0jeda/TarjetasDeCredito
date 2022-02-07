@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
+    <title>Editar Requisitos</title>
+</head>
+<body>
+    <header id="header">
+    </header>
+    <div class="contenedor container">
+        <form action="" method="post">
+            <p class="badge bg-primary text-wrap">Los campos marcados con un <span class="fw-bold fs-5"> * </span> son obligatorios</p>
+            <div id="divBtnEditar" class="mb-3">
+
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label" for="id">ID *</label>
+                <input class="form-control" type="text" name="ID" id="id" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="tarjeta">Tarjeta *</label>
+                <input class="form-control" type="text" name="IDTarjeta" id="tarjeta" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="edad_minima">Edad Minima</label>
+                <input class="form-control" type="text" name="EdadMinima" id="edad_minima">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="edad_maxima">Edad Minima</label>
+                <input class="form-control" type="text" name="EdadMaxima" id="edad_maxima">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="clering">Clering</label>
+                <select class="form-control" name="Clering" id="clering">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="constancia_de_domicilio">Constancia De Domicilio</label>
+                <select class="form-control" name="ConstanciaDeDomicilio" id="constancia_de_domicilio">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="cedula_de_identidad">Cedula De Identidad</label>
+                <select class="form-control" name="CedulaDeIdentidad" id="cedula_de_identidad">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="fotocopia_CI">Fotocopia CI</label>
+                <select class="form-control" name="FotocopiaCI" id="fotocopia_CI">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="recibo_de_sueldo">Recibo De Sueldo</label>
+                <select class="form-control" name="ReciboDeSueldo" id="recibo_de_sueldo">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="certificado_de_ingresos">Certificado De Ingresos</label>
+                <select class="form-control" name="CertificadoDeIngresos" id="certificado_de_ingresos">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="ingresosMinimos">Ingresos Minimos</label>
+                <textarea class="form-control" name="IngresosMinimos" id="ingresosMinimos" cols="10" rows="10"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="antiguedad_laboral">Antiguedad Laboral </label>
+                <textarea class="form-control" name="AntiguedadLaboral" id="antiguedad_laboral" cols="30" rows="10"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="form-control btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/layout.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/requisitosTarjetas.js"></script>
+</body>
+</html>

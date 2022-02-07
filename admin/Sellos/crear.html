@@ -5,18 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
     <title>Nuevo Sello</title>
 </head>
 <body>
     <header id="header">
     </header>
-    <form action="" method="post">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="Nombre_Sello" id="nombre" style="display: block;">
-        <label for="descripcion">Descripcion</label>
-        <textarea name="Descripcion" id="descripcion" cols="30" rows="10" style="display: block;"></textarea>
-        <button type="submit" id="btnEnviar">Enviar</button>
-    </form>
+    <div class="container contenedor">
+        <p class="badge bg-primary text-wrap">Los campos marcados con un <span class="fw-bold fs-5"> * </span> son obligatorios</p>
+        <form action="" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre *</label>
+                <input class="form-control" type="text" name="Nombre_Sello" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="descripcion">Descripcion</label>
+                <textarea class="form-control" name="Descripcion" id="descripcion" cols="30" rows="10"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="form-control btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </div>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/layout.js"></script>

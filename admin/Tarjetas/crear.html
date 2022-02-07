@@ -96,7 +96,11 @@
             </div>
             <div class="mb-3">
                 <label for="cuenta_bancaria" class="form-label">Cuenta bancaria</label>
-                <textarea name="Cuenta_Bancaria" id="cuenta_bancaria" cols="30" rows="10" class="form-control"></textarea>
+                <select name="Cuenta_Bancaria" id="cuenta_bancaria" class="form-control">
+                    <option value="" selected disabled>---</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="costo_envio_estado_de_cuenta" class="form-label">Costo envio estado de cuenta</label>
@@ -123,7 +127,7 @@
                 <textarea name="TelefonoParaExtravio" id="telefono_para_extravio" cols="30" rows="10" class="form-control"></textarea>
             </div>
             <div class="mb-3">
-                <label for="contactless" class="form-label">Contactlesso</label>
+                <label for="contactless" class="form-label">Contactless</label>
                 <select name="Contactless" id="contactless" class="form-control">
                     <option value="" selected disabled>---</option>
                     <option value="1">Si</option>
@@ -150,9 +154,13 @@
                 <label for="cambio_fecha_de_cierre" class="form-label">Cambio fecha de cierre</label>
                 <textarea name="CambioFechaDeCierre" id="cambio_fecha_de_cierre" cols="30" rows="10" class="form-control"></textarea>
             </div>
-            <div class="mb-3">
+            <!---<div class="mb-3">
                 <label for="imagen" class="form-label">Imagen *</label>
                 <input type="text" name="Imagen" id="imagen" class="form-control" required>
+            </div>-->
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen *</label>
+                <input class="form-control" accept="image/png, image/jpeg" type="file" name="Imagen" id="imagen" required>
             </div>
             <div class="mb-3">
                 <label for="informacion_adicional" class="form-label">Informacion adicional</label>

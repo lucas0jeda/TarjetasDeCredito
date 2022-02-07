@@ -36,8 +36,8 @@ class SelloModel{
         return $result;
     }
 
-    public function update($id, $nombre, $descripcion){
-        $query = "UPDATE sellos SET nombre = '${nombre}', descripcion = '${descripcion}' WHERE id_sello = ${id} ";
+    public function update($id, $nombre, $logo,$descripcion){
+        $query = "UPDATE sellos SET nombre = '${nombre}', descripcion = ${descripcion}, logo = '${logo}' WHERE id_sello = ${id} ";
         $result = $this->db->query($query);
         return $result;
     }
@@ -48,8 +48,8 @@ class SelloModel{
         return $result;
     }
 
-    public function insert($nombre, $descripcion){
-        $query = "INSERT INTO sellos (nombre, logo, descripcion) VALUES ('${nombre}', '${nombre}.jpg', '${descripcion}')";
+    public function insert($nombre, $logo,$descripcion){
+        $query = "INSERT INTO sellos (nombre, logo, descripcion) VALUES ('${nombre}', '${logo}', ${descripcion})";
         $result = $this->db->query($query);
         return $result;
     }

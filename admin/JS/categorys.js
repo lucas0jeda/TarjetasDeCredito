@@ -5,15 +5,20 @@ $( document ).ready(function() {
                 cargarDatosEdicion(sessionStorage.getItem("category"));
                $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    editCategory();
+                    let validacion = validacion();
+                    if(validacion){
+                        editCategory();
+                    }
                 });
             }
             break;
         case "http://localhost/TarjetasDeCredito/admin/Categorias/crear.html":
-            console.log("ok");
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                insertCategory();
+                let validacion = validacion();
+                if(validacion){
+                    insertCategory();
+                }
             });
             break;
         case "http://localhost/TarjetasDeCredito/admin/Categorias/":
@@ -49,8 +54,8 @@ function getAllCategorys(){
                     <td>${data[i].id_categoria}</td>
                     <td>${data[i].titulo_categoria}</td>
                     <td>${data[i].informacion}</td>   
-                    <td><button type="button" class="btnEditar" value="${data[i].id_categoria}">Editar</button></td>
-                    <td><button type="button" class="btnEliminar" value="${data[i].id_categoria}">Eliminar</button></td>
+                    <td><button type="button" class="btnEditar btn btn-primary" value="${data[i].id_categoria}">Editar</button></td>
+                    <td><button type="button" class="btnEliminar btn btn-primary" value="${data[i].id_categoria}">Eliminar</button></td>
                 <tr>`;
                 }
                 $('#dataCategorysBodyTable').html(output);
@@ -144,6 +149,18 @@ function insertCategory(){
         }
     });
 }
+
+function validacion(){
+    let retorno = false;
+    let titulo = $("#titulo_categoria").val();
+    let informacion = $("#informacion").val();
+    if(titulo != "" && informacion != ""){
+        retorno = true;
+    }
+    return retorno;
+}
+
+
 
 
 

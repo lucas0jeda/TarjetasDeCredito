@@ -2,7 +2,26 @@ body{
     background-color: #dee2e6;
 }
 
+.customH1{
+    padding: 1.5rem;
+    background-color: #f0f2f5;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+}
+
 .contenedor{
+    margin-top: 2rem;
     background-color: #fff;
     padding: 2%;
+}
+
+.lista{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tabla{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }

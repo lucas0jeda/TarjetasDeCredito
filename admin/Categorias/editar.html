@@ -7,20 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
 </head>
 <body>
     <header id="header">
     </header>
-
-    <form action="" method="post">
-        <label for="id">ID</label>
-        <input type="text" name="ID" id="id" disabled style="display: block;">
-        <label for="titulo_categoria">Titulo Categoria</label>
-        <input type="text" name="tituloCategoria" id="titulo_categoria" style="display: block;">
-        <label for="informacion">Informacion</label>
-        <textarea name="Informacion" id="informacion" cols="30" rows="10" style="display: block;"></textarea>
-        <button type="submit" id="btnEnviar">Enviar</button>
-    </form>
+    <div class="contenedor container">
+        <form action="" method="post">
+            <p class="badge bg-primary text-wrap">Los campos marcados con un <span class="fw-bold fs-5"> * </span> son obligatorios</p>
+            <div class="mb-3" style="display: none">
+                <label class="form-label" for="id">ID</label>
+                <input class="form-control" type="text" name="ID" id="id" style="display: none" disabled>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="titulo_categoria">Titulo Categoria *</label>
+                <input class="form-control" type="text" name="tituloCategoria" id="titulo_categoria" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="informacion">Informacion *</label>
+                <textarea class="form-control" name="Informacion" id="informacion" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="form-control btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </div>
 
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>

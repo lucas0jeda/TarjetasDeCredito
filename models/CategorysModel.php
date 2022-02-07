@@ -16,13 +16,13 @@ class categorysModel{
     }
 
     public function insert($titulo, $info){
-        $query = "INSERT INTO categorias (titulo_categoria, informacion) VALUES ('${titulo}', '${info}')";
+        $query = "INSERT INTO categorias (titulo_categoria, informacion) VALUES ('${titulo}', ${info})";
         $result = $this->db->query($query);
         return $result;
     }
 
     public function update($id, $titulo, $info){
-        $query = "UPDATE categorias SET titulo_categoria = '${titulo}', informacion = '${info}' WHERE id_categoria = ${id} ";
+        $query = "UPDATE categorias SET titulo_categoria = '${titulo}', informacion = ${info} WHERE id_categoria = ${id} ";
         $result = $this->db->query($query);
         return $result;
     }

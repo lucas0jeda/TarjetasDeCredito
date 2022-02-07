@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
+    <title>Crear sistema de puntos</title>
+</head>
+<body>
+    <header id="header">
+    </header>
+
+    <div class="container contenedor">
+        <form action="" method="post">
+            <p class="badge bg-primary text-wrap">Los campos marcados con un <span class="fw-bold fs-5"> * </span> son obligatorios</p>
+            <div class="mb-3">
+                <label class="form-label" for="tarjeta">Tarjeta *</label>
+                <select class="form-control" name="Tarjeta" id="tarjeta" required>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre *</label>
+                <input class="form-control" type="text" name="Nombre" id="nombre" required>
+            </div>
+            <!----//////////////////------>
+            <div class="mb-3">
+                <label class="form-label" for="equivalenciaPUno">Equivalencia</label>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input class="form-control" type="text" name="EquivalenciaPUno" id="equivalenciaPUno" placeholder="Puntos">
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-control" name="MonedaEquivalencia" id="monedaEquivalencia">
+                            <option value="$">$</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <input class="form-control" type="text" name="EquivalenciaPDos" id="equivalenciaPDos" placeholder="Dinero">
+                    </div>
+                </div>
+            </div>
+            <!----//////////////////------>
+            <div class="mb-3">
+                <label class="form-label" for="informacion">Informacion Adicional</label>
+                <textarea class="form-control" name="Informacion" id="informacion" cols="30" rows="10"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="linkCatalogo">Link Catalogo</label>
+                <input class="form-control" type="text" name="LinkCatalogo" id="linkCatalogo" required>
+            </div>
+            <div class="mb-3">
+                <button class="form-control btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/layout.js"></script>
+    <script type="text/javascript" src="http://localhost/TarjetasDeCredito/admin/JS/sistemaDePuntos.js"></script>
+</body>
+</html>

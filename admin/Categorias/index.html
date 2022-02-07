@@ -4,27 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/admin/css/admin.css" />
     <link rel="stylesheet" href="http://localhost/TarjetasDeCredito/css/bootstrap.min.css" />
     <title>Categorias</title>
 </head>
 <body>
     <header id="header">
     </header>
-    <h1>Categorias</h1>
-    <button id="addCategory">Nueva categoria</button>
-    <table id="dataCategorysTable">
-        <thead>
-            <th>ID</th>
-            <th>Titulo</th>
-            <th>Informacion</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </thead>
-        <tbody id="dataCategorysBodyTable">
+    <div class="container-fluid">
+        <h1 class="customH1">Categorias</h1>
+        <button class="btn btn-primary" id="addCategory">Nueva categoria</button>
+        <table id="dataCategorysTable" class="table tabla">
+            <thead>
+                <th scope="col">ID</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Informacion</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </thead>
+            <tbody id="dataCategorysBodyTable">
 
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
 
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/TarjetasDeCredito/js/bootstrap.min.js"></script>
