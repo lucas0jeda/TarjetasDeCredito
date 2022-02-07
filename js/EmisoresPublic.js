@@ -8,7 +8,7 @@ function cargarTarjetasPorEmisor(idEmisor){
     try{
         const data = new FormData();
         data.append('id_emisor', idEmisor);
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getTarjetasPorEmisor', {
+        fetch('/app/tarjetas/getTarjetasPorEmisor', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

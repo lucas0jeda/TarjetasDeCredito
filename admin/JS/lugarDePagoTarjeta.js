@@ -1,17 +1,19 @@
 $(document).ready(function(){
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/LugaresDePagoTarjeta/":
             sessionStorage.removeItem("lugarDePago");
             sessionStorage.removeItem("lugaresDePagoTarjeta");
             getAllCards();
             break;
-        case "http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/detalle.html":
+        case "/admin/LugaresDePagoTarjeta/detalle.html":
             let output = `<li class="list-group-item">Tarjeta:</li>
                           <li class="list-group-item">` + sessionStorage.getItem('lugarDePago') + `</li>`;
             $("#tarjeta").html(output);
             getLugaresDePagoTarjeta("detalle");
             break;
-        case "http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/editar.html":
+        case "/admin/LugaresDePagoTarjeta/editar.html":
             if(sessionStorage.getItem("lugarDePago")){
                 getAllLugaresDePago();
                 $("#btnEnviar").click(function(e){
@@ -25,18 +27,18 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/detalle.html");
+            window.location.replace("/admin/LugaresDePagoTarjeta/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/editar.html");
+            window.location.replace("/admin/LugaresDePagoTarjeta/editar.html");
         });
     }, 2000);
 });
 
 function getAllCards(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -62,7 +64,7 @@ function getLugaresDePagoTarjeta(action){
     let idtarjeta = sessionStorage.getItem('lugarDePago');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getLugaresDePagoTarjeta', {
+    fetch('/app/tarjetas/getLugaresDePagoTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -80,7 +82,7 @@ function getLugaresDePagoTarjeta(action){
 function getAllLugaresDePago(){
     // <label class="list-group-item"><input class="form-check-input me-1" type="checkbox" value="">First checkbox</label>
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/all').then(response => response.json()).then(data => {
+        fetch('/app/lugarDePago/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 cargarDatos("editar", data);
                 setTimeout(function(){
@@ -152,7 +154,7 @@ function updateLugaresDePagoTarjetas(){
     try{
         if(idLugares.length > 0){
           let JsonString = JSON.stringify(idLugares);
-            fetch('http://localhost/TarjetasDeCredito/app/tarjetas/updateLugaresDePagoTarjeta', {
+            fetch('/app/tarjetas/updateLugaresDePagoTarjeta', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -162,7 +164,7 @@ function updateLugaresDePagoTarjetas(){
             }).then(response => response.json()).then(data => {
                 if(data){
                     alert('Operacion realizada con exito!');
-                    window.location="http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/";
+                    window.location="/admin/LugaresDePagoTarjeta/";
                 }
             });
         }else{

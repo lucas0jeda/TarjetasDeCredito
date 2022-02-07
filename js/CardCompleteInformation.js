@@ -8,7 +8,7 @@ function cargarCardCompleteInfomation(idTarjeta){
     try {
         const data = new FormData();
         data.append('id_tarjeta', "3");
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getOneCompleteInformationCard', {
+        fetch('/app/tarjetas/getOneCompleteInformationCard', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

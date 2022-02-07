@@ -1,13 +1,15 @@
 $(document).ready(function (){
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/Sellos/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/Sellos/":
             sessionStorage.removeItem("sello");
            $("#addSello").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/crear.html");
+                window.location.replace("/admin/Sellos/crear.html");
             });
             getAllSellos();
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Sellos/editar.html":
+        case "/admin/Sellos/editar.html":
             if(sessionStorage.getItem("sello")){
                 cargarDatosEdicion(sessionStorage.getItem("sello"));
                 $("#btnEnviar").click(function (e){
@@ -16,7 +18,7 @@ $(document).ready(function (){
                 });
             }
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Sellos/crear.html":
+        case "/admin/Sellos/crear.html":
             console.log("ok");
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
@@ -28,7 +30,7 @@ $(document).ready(function (){
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('sello',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/editar.html");
+            window.location.replace("/admin/Sellos/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta sello?");
@@ -41,7 +43,7 @@ $(document).ready(function (){
 
 function getAllSellos(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/sellos/all')
+        fetch('/app/sellos/all')
             .then(response => response.json())
             .then(data => {
                 if(typeof data === 'object'){
@@ -69,7 +71,7 @@ function cargarDatosEdicion(idSello){
     try{
         const data = new FormData();
         data.append('ID', idSello);
-        fetch('http://localhost/TarjetasDeCredito/app/sellos/selectOneSello', {
+        fetch('/app/sellos/selectOneSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -78,7 +80,7 @@ function cargarDatosEdicion(idSello){
                 $("#id").val(data.id_sello);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
-                let src = "http://localhost/TarjetasDeCredito/images/sellosImg/" + data.logo;
+                let src = "/images/sellosImg/" + data.logo;
                 $("#logoSello").attr("src", src);
                 sessionStorage.setItem("logoActual", data.logo);
             }else{
@@ -103,14 +105,14 @@ function editSello(){
         data.append('desc', desc);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
-        fetch('http://localhost/TarjetasDeCredito/app/sellos/updateSello', {
+        fetch('/app/sellos/updateSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 sessionStorage.removeItem("logoActual");
                 alert("Sello editado con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/");
+                window.location.replace("/admin/Sellos/");
             }else{
                 console.log("error");
             }
@@ -123,7 +125,7 @@ function editSello(){
 function deleteSello(id){
     const data = new FormData();
     data.append('ID', id);
-    fetch('http://localhost/TarjetasDeCredito/app/sellos/deleteSello', {
+    fetch('/app/sellos/deleteSello', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -144,13 +146,13 @@ function insertSello(){
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
     data.append('imagen', imagen);
-    fetch('http://localhost/TarjetasDeCredito/app/sellos/insertSello', {
+    fetch('/app/sellos/insertSello', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Sello Ingresada correctamente!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Sellos/");
+            window.location.replace("/admin/Sellos/");
         }else{
             console.log("error");
         }

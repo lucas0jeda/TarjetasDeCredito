@@ -1,13 +1,15 @@
 $(document).ready(function() {
-    switch (window.location.href) {
-        case "http://localhost/TarjetasDeCredito/admin/Beneficios/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]) {
+        case "/admin/Beneficios/":
             sessionStorage.removeItem("beneficioID");
             $("#addBeneficio").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Beneficios/crear.html");
+                window.location.replace("/admin/Beneficios/crear.html");
             });
             getAllBeneficios();
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Beneficios/editar.html":
+        case "/admin/Beneficios/editar.html":
             if(sessionStorage.getItem("beneficioID")){
                 cargarDatosEdicion(sessionStorage.getItem("beneficioID"));
                 $("#btnEnviar").click(function (e){
@@ -16,7 +18,7 @@ $(document).ready(function() {
                 });
             }
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Beneficios/crear.html":
+        case "/admin/Beneficios/crear.html":
             getAllCards();
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
@@ -32,7 +34,7 @@ $(document).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('beneficioID',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Beneficios/editar.html");
+            window.location.replace("/admin/Beneficios/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este beneficio?");
@@ -46,7 +48,7 @@ $(document).ready(function() {
 
 function getAllCards(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/beneficios/selectorBeneficios').then(response => response.json()).then(data => {
+        fetch('/app/beneficios/selectorBeneficios').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = ``;
                 for(let i in data){
@@ -65,7 +67,7 @@ function getAllCards(){
 function deleteBeneficio(idBeneficio){
     const data = new FormData();
     data.append('ID', idBeneficio);
-    fetch('http://localhost/TarjetasDeCredito/app/beneficios/deleteBeneficio', {
+    fetch('/app/beneficios/deleteBeneficio', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -83,7 +85,7 @@ function cargarDatosEdicion(id){
     try{
         const data = new FormData();
         data.append('ID', id);
-        fetch('http://localhost/TarjetasDeCredito/app/beneficios/selectOneBeneficio', {
+        fetch('/app/beneficios/selectOneBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -106,7 +108,7 @@ function cargarDatosEdicion(id){
 
 function getAllBeneficios(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/beneficios/all').then(response => response.json()).then(data => {
+        fetch('/app/beneficios/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -142,13 +144,13 @@ function editBeneficio(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('http://localhost/TarjetasDeCredito/app/beneficios/updateBeneficio', {
+        fetch('/app/beneficios/updateBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Beneficio editado con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Beneficios/");
+                window.location.replace("/admin/Beneficios/");
             }else{
                 console.log("error");
             }
@@ -169,13 +171,13 @@ function insertBeneficio(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('http://localhost/TarjetasDeCredito/app/beneficios/insertBeneficio', {
+        fetch('/app/beneficios/insertBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Beneficio ingresado correctamente!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Beneficios/");
+                window.location.replace("/admin/Beneficios/");
             }else{
                 console.log("error");
             }

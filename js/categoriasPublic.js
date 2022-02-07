@@ -19,7 +19,7 @@ function cargarTarjetasCategria(idCategoria){
     try{
         const data = new FormData();
         data.append('id_categoria', idCategoria);
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getTarjetasCategoria', {
+        fetch('/app/tarjetas/getTarjetasCategoria', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

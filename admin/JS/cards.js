@@ -1,13 +1,15 @@
 $(document).ready(function (){
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/Tarjetas/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/Tarjetas/":
             sessionStorage.removeItem("tarjeta");
             $("#addCard").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Tarjetas/crear.html");
+                window.location.replace("/admin/Tarjetas/crear.html");
             });
             getAllCards();
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Tarjetas/crear.html":
+        case "/admin/Tarjetas/crear.html":
             cargarSelectores();
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
@@ -17,7 +19,7 @@ $(document).ready(function (){
                 }
             });
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Tarjetas/editar.html":
+        case "/admin/Tarjetas/editar.html":
             if(sessionStorage.getItem("tarjeta")){
                 cargarSelectores();
                 setTimeout(function (){
@@ -42,7 +44,7 @@ $(document).ready(function (){
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('tarjeta',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Tarjetas/editar.html");
+            window.location.replace("/admin/Tarjetas/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta tarjeta?");
@@ -60,7 +62,7 @@ function prueba(){
 
 function getAllCards(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -87,7 +89,7 @@ function getAllCards(){
 function deleteCard(idCard){
     const data = new FormData();
     data.append('ID', idCard);
-    fetch('http://localhost/TarjetasDeCredito/app/tarjetas/deleteCard', {
+    fetch('/app/tarjetas/deleteCard', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -103,7 +105,7 @@ function deleteCard(idCard){
 
 function cargarSelectores(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/emisores/all').then(response => response.json()).then(emisor => {
+        fetch('/app/emisores/all').then(response => response.json()).then(emisor => {
             if(typeof emisor === 'object'){
                 let output = `<option value="" selected disabled>---</option>`;
                 for(let i in emisor){
@@ -114,7 +116,7 @@ function cargarSelectores(){
                 console.log("error");
             }
         });
-        fetch('http://localhost/TarjetasDeCredito/app/sellos/all')
+        fetch('/app/sellos/all')
             .then(response => response.json())
             .then(sellos => {
                 if(typeof sellos === 'object'){
@@ -150,7 +152,7 @@ function cargarDatosEdicion(idTarjeta){
     try{
         const data = new FormData();
         data.append('ID', idTarjeta);
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/selectOneTarjeta', {
+        fetch('/app/tarjetas/selectOneTarjeta', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -184,7 +186,7 @@ function cargarDatosEdicion(idTarjeta){
                 $('#fecha_de_cierre').val(data.fecha_de_cierre);
                 $('#cambio_fecha_de_cierre').val(data.cambio_fecha_de_cierre);
                 $('#informacion_adicional').val(data.informacion_adicional);
-                let src = "http://localhost/TarjetasDeCredito/images/cardsImg/" + data.imagen;
+                let src = "/images/cardsImg/" + data.imagen;
                 $("#imagenTarjeta").attr("src", src);
                 sessionStorage.setItem("imagenActual", data.imagen);
             }else{
@@ -261,14 +263,14 @@ function editTarjeta(){
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
         data.append("imagenActual", imagenActual)
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/updateCard', {
+        fetch('/app/tarjetas/updateCard', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 sessionStorage.removeItem("imagenActual");
                 alert("Tarjeta editada con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Tarjetas/");
+                window.location.replace("/admin/Tarjetas/");
             }else{
                 console.log("error");
             }
@@ -339,13 +341,13 @@ function insertCard(){
         data.append('cambio_fecha_de_cierre', cambioFechaDeCierre);
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/insertCard', {
+        fetch('/app/tarjetas/insertCard', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Tarjeta ingresada con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Tarjetas/");
+                window.location.replace("/admin/Tarjetas/");
             }else{
                 console.log("error");
             }

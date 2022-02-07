@@ -1,13 +1,15 @@
 $(document).ready(function() {
-   switch (window.location.href){
-      case 'http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/':
+   let link = window.location.href;
+   const explode = link.split(".com");
+   switch (explode[1]){
+      case '/admin/SistemaDePuntos/':
          sessionStorage.removeItem("sistemaDePuntosID");
          $("#addSisPuntos").click(function (){
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/crear.html");
+            window.location.replace("/admin/SistemaDePuntos/crear.html");
          });
          getAllSistemasDePuntos();
          break;
-      case "http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/editar.html":
+      case "/admin/SistemaDePuntos/editar.html":
          if(sessionStorage.getItem("sistemaDePuntosID")){
             cargarDatosEdicion(sessionStorage.getItem("sistemaDePuntosID"));
             $("#btnEnviar").click(function (e){
@@ -16,7 +18,7 @@ $(document).ready(function() {
             });
          }
          break;
-      case "http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/crear.html":
+      case "/admin/SistemaDePuntos/crear.html":
          getAllCards();
          $("#btnEnviar").click(function (e){
             e.preventDefault();
@@ -28,7 +30,7 @@ $(document).ready(function() {
    setTimeout(function (){
       $(".btnEditar").click(function (){
          sessionStorage.setItem('sistemaDePuntosID',$(this).val());
-         window.location.replace("http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/editar.html");
+         window.location.replace("/admin/SistemaDePuntos/editar.html");
       });
       $(".btnEliminar").click(function (){
          let confirmationDelete = confirm("Estas seguro que deseas eliminar este sistema de puntos?");
@@ -41,7 +43,7 @@ $(document).ready(function() {
 
 function getAllSistemasDePuntos(){
    try{
-      fetch('http://localhost/TarjetasDeCredito/app/sistemaDePuntos/all').then(response => response.json()).then(data => {
+      fetch('/app/sistemaDePuntos/all').then(response => response.json()).then(data => {
          if(typeof data === 'object'){
             let output = '';
             for(let i in data){
@@ -69,7 +71,7 @@ function cargarDatosEdicion(id){
    try{
       const data = new FormData();
       data.append('ID', id);
-      fetch('http://localhost/TarjetasDeCredito/app/sistemaDePuntos/selectOneSistemaDePuntos', {
+      fetch('/app/sistemaDePuntos/selectOneSistemaDePuntos', {
          method: "POST",
          body: data
       }).then(response => response.json()).then(data => {
@@ -97,7 +99,7 @@ function cargarDatosEdicion(id){
 
 function getAllCards(){
    try{
-      fetch('http://localhost/TarjetasDeCredito/app/tarjetas/all').then(response => response.json()).then(data => {
+      fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
          if(typeof data === 'object'){
             let output = ``;
             for(let i in data){
@@ -127,13 +129,13 @@ function editSistemaDePuntos(){
    data.append('equivalencia', equivalencia);
    data.append('informacion', informacion);
    data.append('link', link);
-   fetch('http://localhost/TarjetasDeCredito/app/sistemaDePuntos/updateSistemaDePuntos', {
+   fetch('/app/sistemaDePuntos/updateSistemaDePuntos', {
       method: "POST",
       body: data
    }).then(response => response.json()).then(data => {
       if(data){
          alert("Sistema de puntos editado con exito!");
-         window.location.replace("http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/");
+         window.location.replace("/admin/SistemaDePuntos/");
       }else{
          console.log("error");
       }
@@ -143,7 +145,7 @@ function editSistemaDePuntos(){
 function deleteSisDePuntos(id){
    let data = new FormData();
    data.append('ID', id);
-   fetch('http://localhost/TarjetasDeCredito/app/sistemaDePuntos/deleteSistemaDePuntos', {
+   fetch('/app/sistemaDePuntos/deleteSistemaDePuntos', {
       method: "POST",
       body: data
    }).then(response => response.json()).then(data => {
@@ -169,13 +171,13 @@ function insertSistemaDePuntos(){
    data.append('informacion', informacion);
    data.append('link', link);
    try{
-      fetch('http://localhost/TarjetasDeCredito/app/sistemaDePuntos/insertSistemaDePuntos', {
+      fetch('/app/sistemaDePuntos/insertSistemaDePuntos', {
          method: "POST",
          body: data
       }).then(response => response.json()).then(data => {
          if(data){
             alert("Sistema de puntos ingresado correctamente!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/SistemaDePuntos/");
+            window.location.replace("/admin/SistemaDePuntos/");
          }else{
             console.log("error");
          }

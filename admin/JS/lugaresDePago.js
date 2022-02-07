@@ -1,6 +1,8 @@
 $( document ).ready(function() {
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/LugaresDePago/editar.html":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/LugaresDePago/editar.html":
             if(sessionStorage.getItem("lugarDePago")){
                 cargarDatosEdicion(sessionStorage.getItem("lugarDePago"));
                 $("#imagen").change(function(){
@@ -17,7 +19,7 @@ $( document ).ready(function() {
                 });
             }
             break;
-       case "http://localhost/TarjetasDeCredito/admin/LugaresDePago/crear.html":
+       case "/admin/LugaresDePago/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
                 let validacion = validacion();
@@ -26,10 +28,10 @@ $( document ).ready(function() {
                 }
             });
             break;
-        case "http://localhost/TarjetasDeCredito/admin/LugaresDePago/":
+        case "/admin/LugaresDePago/":
             sessionStorage.removeItem("lugarDePago");
             $("#addLugarDePago").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePago/crear.html");
+                window.location.replace("/admin/LugaresDePago/crear.html");
             });
             getAllLugarDePago();
             break;
@@ -38,7 +40,7 @@ $( document ).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePago/editar.html");
+            window.location.replace("/admin/LugaresDePago/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este lugar de pago?");
@@ -61,7 +63,7 @@ function validacion(){
 
 function getAllLugarDePago(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/all').then(response => response.json()).then(data => {
+        fetch('/app/lugarDePago/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -87,7 +89,7 @@ function cargarDatosEdicion(idLugarDePago){
     try{
         const data = new FormData();
         data.append('ID', idLugarDePago);
-        fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/selectOneLugarDePago', {
+        fetch('/app/lugarDePago/selectOneLugarDePago', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -95,7 +97,7 @@ function cargarDatosEdicion(idLugarDePago){
                 $("#id").val(data.id_lugar_de_pago);
                 $("#nombre").val(data.Nombre);
                 $("#logo").val(data.logo);
-                let src = "http://localhost/TarjetasDeCredito/images/lugarDePagoImg/" + data.logo;
+                let src = "/images/lugarDePagoImg/" + data.logo;
                 $("#logoLugarDePago").attr("src", src);
                 sessionStorage.setItem("logoActual", data.logo);
             }else{
@@ -118,7 +120,7 @@ function editLugarDePago(){
         data.append('nombre', nombre);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
-        fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/updateLugarDePago', {
+        fetch('/app/lugarDePago/updateLugarDePago', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -126,7 +128,7 @@ function editLugarDePago(){
             if(data){
                 sessionStorage.removeItem("logoActual");
                 alert("Lugar de pago editado con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePago/");
+                window.location.replace("/admin/LugaresDePago/");
             }else{
                 console.log("error");
             }
@@ -139,7 +141,7 @@ function editLugarDePago(){
 function deleteLugarDePago(idLugarDePago){
     const data = new FormData();
     data.append('ID', idLugarDePago);
-    fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/deleteLugarDePago', {
+    fetch('/app/lugarDePago/deleteLugarDePago', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -158,13 +160,13 @@ function insertLugarDePago(){
     let imagen = document.getElementById("imagen").files[0];
     data.append('nombre', nombre);
     data.append('imagen', imagen);
-    fetch('http://localhost/TarjetasDeCredito/app/lugarDePago/insertLugarDePago', {
+    fetch('/app/lugarDePago/insertLugarDePago', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Lugar de pago ingresado con exito!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/LugaresDePago/");
+            window.location.replace("/admin/LugaresDePago/");
         }else{
             console.log("error");
         }

@@ -11,13 +11,13 @@ document.onreadystatechange = function () {
 function login(formularioLogin){
     try{
         let datos = new FormData(formularioLogin);
-        fetch('http://localhost/TarjetasDeCredito/app/admin/login',{
+        fetch('/app/admin/login',{
             method: "POST",
             body: datos
         }).then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 sessionStorage.setItem('admin',data.usuario);
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/dashboard.html");
+                window.location.replace("/admin/dashboard.html");
             }else{
                 console.log("error");
             }

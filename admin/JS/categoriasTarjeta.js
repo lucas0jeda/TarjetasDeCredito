@@ -1,17 +1,19 @@
 $(document).ready(function(){
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/CategoriaTarjetas/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/CategoriaTarjetas/":
             sessionStorage.removeItem("TarjetaCat");
             sessionStorage.removeItem("categoriasTarjeta");
             getAllCards();
             break;
-        case "http://localhost/TarjetasDeCredito/admin/CategoriaTarjetas/detalle.html":
+        case "/admin/CategoriaTarjetas/detalle.html":
             let output = `<li class="list-group-item">Tarjeta:</li>
                           <li class="list-group-item">` + sessionStorage.getItem('TarjetaCat') + `</li>`;
             $("#tarjeta").html(output);
             getCategoriasTarjeta("detalle");
             break;
-        case "http://localhost/TarjetasDeCredito/admin/CategoriaTarjetas/editar.html":
+        case "/admin/CategoriaTarjetas/editar.html":
             if(sessionStorage.getItem("TarjetaCat")){
                 getAllCategoria();
                 $("#btnEnviar").click(function(e){
@@ -25,11 +27,11 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('TarjetaCat',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/CategoriaTarjetas/detalle.html");
+            window.location.replace("/admin/CategoriaTarjetas/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('TarjetaCat',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/CategoriaTarjetas/editar.html");
+            window.location.replace("/admin/CategoriaTarjetas/editar.html");
         });
     }, 2000);
 });
@@ -59,7 +61,7 @@ function updateCategoriasTarjeta(){
     try{
         if(idCategoria.length > 0){
             let JsonString = JSON.stringify(idCategoria);
-            fetch('http://localhost/TarjetasDeCredito/app/tarjetas/updateCategoriasTarjeta', {
+            fetch('/app/tarjetas/updateCategoriasTarjeta', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -69,7 +71,7 @@ function updateCategoriasTarjeta(){
             }).then(response => response.json()).then(data => {
                 if(data){
                     alert('Operacion realizada con exito!');
-                    window.location="http://localhost/TarjetasDeCredito/admin/LugaresDePagoTarjeta/";
+                    window.location="/admin/LugaresDePagoTarjeta/";
                 }
             });
         }else{
@@ -82,7 +84,7 @@ function updateCategoriasTarjeta(){
 
 function getAllCategoria(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/categorys/all').then(response => response.json()).then(data => {
+        fetch('/app/categorys/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 cargarDatos("editar", data);
                 setTimeout(function(){
@@ -99,7 +101,7 @@ function getAllCategoria(){
 
 function getAllCards(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -125,7 +127,7 @@ function getCategoriasTarjeta(action){
     let idtarjeta = sessionStorage.getItem('TarjetaCat');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getCategoriasTarjeta', {
+    fetch('/app/tarjetas/getCategoriasTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

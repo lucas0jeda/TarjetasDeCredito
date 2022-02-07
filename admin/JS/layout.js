@@ -6,5 +6,5 @@ document.onreadystatechange = function () {
 }
 
 function loadNavbar(){
-    $("#header").load("http://localhost/TarjetasDeCredito/admin/layout/nav.html");
+    $("#header").load("/admin/layout/nav.html");
 }

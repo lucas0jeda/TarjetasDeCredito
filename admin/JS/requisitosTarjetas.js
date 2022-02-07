@@ -1,20 +1,22 @@
 $(document).ready(function(){
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/RequisitosTarjeta/":
             sessionStorage.removeItem("idTarjetaRequisito");
             sessionStorage.removeItem("RequisitoTarjetaJson");
             $("#addRequisito").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/crear.html");
+                window.location.replace("/admin/RequisitosTarjeta/crear.html");
             });
             getAllCards("index");
             break;
-        case "http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/detalle.html":
+        case "/admin/RequisitosTarjeta/detalle.html":
             let output = `<li class="list-group-item">Tarjeta:</li>
                           <li class="list-group-item">` + sessionStorage.getItem('idTarjetaRequisito') + `</li>`;
             $("#tarjeta").html(output);
             getRequisitosTarjeta("detalle");
             break;
-        case "http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/editar.html":
+        case "/admin/RequisitosTarjeta/editar.html":
             if(sessionStorage.getItem("idTarjetaRequisito")){
                 $("#divBtnEditar").html(`<button class="form-control btn btn-primary" type="submit" id="btnDelete" disabled="false">Eliminar Requisito</button>`);
                 getRequisitosTarjeta("editar");
@@ -37,7 +39,7 @@ $(document).ready(function(){
                 },500);
             }
             break;
-        case "http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/crear.html":
+        case "/admin/RequisitosTarjeta/crear.html":
             getAllCards("crear");
             $("#btnEnviar").click(function(e){
                 e.preventDefault();
@@ -76,11 +78,11 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('idTarjetaRequisito',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/detalle.html");
+            window.location.replace("/admin/RequisitosTarjeta/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('idTarjetaRequisito',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/editar.html");
+            window.location.replace("/admin/RequisitosTarjeta/editar.html");
         });
     }, 2000);
 });
@@ -89,13 +91,13 @@ function deleteRequisito(){
     let id = $("#id").val();
     let data = new FormData();
     data.append('id', id);
-    fetch('http://localhost/TarjetasDeCredito/app/requisitosTarjeta/deleteRequisito', {
+    fetch('/app/requisitosTarjeta/deleteRequisito', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Requisito eliminado con exito!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/");
+            window.location.replace("/admin/RequisitosTarjeta/");
         }else{
             console.log("error");
         }
@@ -138,13 +140,13 @@ function updateRequisitosTarjetas(){
     data.append('certificado_de_ingresos',certificadoDeIngresos);
     data.append('ingresosMinimos',ingresosMinimos);
     data.append('antiguedad_laboral',antiguedadLaboral);
-    fetch('http://localhost/TarjetasDeCredito/app/requisitosTarjeta/updateRequisito', {
+    fetch('/app/requisitosTarjeta/updateRequisito', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Requisito editado con exito!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/");
+            window.location.replace("/admin/RequisitosTarjeta/");
         }else{
             console.log("error");
         }
@@ -153,7 +155,7 @@ function updateRequisitosTarjetas(){
 
 function getAllCards(action){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -251,7 +253,7 @@ function getRequisitosTarjeta(action){
     let idtarjeta = sessionStorage.getItem('idTarjetaRequisito');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('http://localhost/TarjetasDeCredito/app/tarjetas/getRequisitosTarjeta', {
+    fetch('/app/tarjetas/getRequisitosTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -293,13 +295,13 @@ function insertRequisitosTarjetas(){
         data.append('certificado_de_ingresos',certificadoDeIngresos);
         data.append('ingresosMinimos',ingresosMinimos);
         data.append('antiguedad_laboral',antiguedadLaboral);
-        fetch('http://localhost/TarjetasDeCredito/app/requisitosTarjeta/insertRequisito', {
+        fetch('/app/requisitosTarjeta/insertRequisito', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Requisito ingresado correctamente!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/RequisitosTarjeta/");
+                window.location.replace("/admin/RequisitosTarjeta/");
             }else{
                 console.log("error");
             }

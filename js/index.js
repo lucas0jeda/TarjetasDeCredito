@@ -1,6 +1,8 @@
 $(document).ready(function () {
-  switch (window.location.href){
-    case "http://localhost/TarjetasDeCredito/":
+  let link = window.location.href;
+  const explode = link.split(".com");
+  switch (explode[1]){
+    case "/":
       sessionStorage.clear();
       categorias().then(data => {
         cargarCategorias(data);
@@ -13,7 +15,7 @@ $(document).ready(function () {
         cargarNavSellos(data, 1);
       });
       break;
-    case "http://localhost/TarjetasDeCredito/#":
+    case "/#":
       sessionStorage.clear();
       categorias().then(data => {
         cargarCategorias(data);
@@ -25,7 +27,7 @@ $(document).ready(function () {
       sellos().then(data => {
         cargarNavSellos(data, 1);
       });
-    case "http://localhost/TarjetasDeCredito/category.html":
+    case "/category.html":
       categorias().then(data => {
         cargarNavCategorias(data, 1);
       });
@@ -36,7 +38,7 @@ $(document).ready(function () {
         cargarNavSellos(data, 1);
       });
       break;
-    case "http://localhost/TarjetasDeCredito/emisor.html":
+    case "/emisor.html":
       categorias().then(data => {
         cargarNavCategorias(data, 1);
       });
@@ -47,7 +49,7 @@ $(document).ready(function () {
         cargarNavSellos(data, 1);
       });
       break;
-    case "http://localhost/TarjetasDeCredito/credit-cards.html":
+    case "/credit-cards.html":
       categorias().then(data => {
         cargarNavCategorias(data, 1);
       });
@@ -220,7 +222,7 @@ function cargarNavSellos(data, cargar = 0){
 
 function categorias(){
     try{
-      return fetch('http://localhost/TarjetasDeCredito/app/categorys/all').then(response => response.json());
+      return fetch('/app/categorys/all').then(response => response.json());
     }catch (e) {
       console.log(e);
     }
@@ -228,7 +230,7 @@ function categorias(){
 
 function emisores(){
   try{
-    return fetch('http://localhost/TarjetasDeCredito/app/emisores/all').then(response => response.json());
+    return fetch('/app/emisores/all').then(response => response.json());
   }catch (e) {
     console.log(e);
   }
@@ -236,7 +238,7 @@ function emisores(){
 
 function sellos(){
   try{
-    return fetch('http://localhost/TarjetasDeCredito/app/sellos/all').then(response => response.json());
+    return fetch('/app/sellos/all').then(response => response.json());
   }catch (e) {
     console.log(e);
   }
@@ -299,7 +301,7 @@ function redirectCategoriaTarjetas(data){
   let result = sessionStorage.getItem('categoria_' + data);
   sessionStorage.setItem('PublicCategoriaCargar', result);
   if(sessionStorage.getItem("PublicCategoriaCargar")){
-    window.location="http://localhost/TarjetasDeCredito/category.html";
+    window.location="/category.html";
   }
 }
 
@@ -307,14 +309,14 @@ function redirectEmisoresTarjetas(data){
   let result = sessionStorage.getItem('emisor_' + data);
   sessionStorage.setItem('PublicEmisorCargar', result);
   if(sessionStorage.getItem("PublicEmisorCargar")){
-    window.location="http://localhost/TarjetasDeCredito/emisor.html";
+    window.location="/emisor.html";
   }
 }
   /*const handleImageUpload = event => {
     const files = event.target.files;
     const formData = new FormData();
     formData.append('imagen', files[0])
-    fetch('http://localhost/TarjetasDeCredito/app/tarjetas/guardarImagen', {
+    fetch('/app/tarjetas/guardarImagen', {
     method: 'POST',
     body: formData
   }).then(response => response.json()).then(data => {

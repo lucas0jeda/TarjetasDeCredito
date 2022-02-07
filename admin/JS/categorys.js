@@ -1,6 +1,8 @@
 $( document ).ready(function() {
-    switch (window.location.href){
-        case "http://localhost/TarjetasDeCredito/admin/Categorias/editar.html":
+    let link = window.location.href;
+    const explode = link.split(".com");
+    switch (explode[1]){
+        case "/admin/Categorias/editar.html":
             if(sessionStorage.getItem("category")){
                 cargarDatosEdicion(sessionStorage.getItem("category"));
                $("#btnEnviar").click(function (e){
@@ -12,7 +14,7 @@ $( document ).ready(function() {
                 });
             }
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Categorias/crear.html":
+        case "/admin/Categorias/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
                 let validacion = validacion();
@@ -21,10 +23,10 @@ $( document ).ready(function() {
                 }
             });
             break;
-        case "http://localhost/TarjetasDeCredito/admin/Categorias/":
+        case "/admin/Categorias/":
             sessionStorage.removeItem("category");
             $("#addCategory").click(function (){
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Categorias/crear.html");
+                window.location.replace("/admin/Categorias/crear.html");
             });
             getAllCategorys();
             break;
@@ -33,7 +35,7 @@ $( document ).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('category',$(this).val());
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Categorias/editar.html");
+            window.location.replace("/admin/Categorias/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta categoria?");
@@ -46,7 +48,7 @@ $( document ).ready(function() {
 
 function getAllCategorys(){
     try{
-        fetch('http://localhost/TarjetasDeCredito/app/categorys/all').then(response => response.json()).then(data => {
+        fetch('/app/categorys/all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -72,7 +74,7 @@ function cargarDatosEdicion(idCategory){
     try{
         const data = new FormData();
         data.append('ID', idCategory);
-        fetch('http://localhost/TarjetasDeCredito/app/categorys/selectOneCategory', {
+        fetch('/app/categorys/selectOneCategory', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -98,13 +100,13 @@ function editCategory(){
         data.append('ID', id);
         data.append('titulo', titulo);
         data.append('informacion', informacion);
-        fetch('http://localhost/TarjetasDeCredito/app/categorys/updateCategory', {
+        fetch('/app/categorys/updateCategory', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Categoria editada con exito!");
-                window.location.replace("http://localhost/TarjetasDeCredito/admin/Categorias/");
+                window.location.replace("/admin/Categorias/");
             }else{
                 console.log("error");
             }
@@ -117,7 +119,7 @@ function editCategory(){
 function deleteCategory(idCategory){
     const data = new FormData();
     data.append('ID', idCategory);
-    fetch('http://localhost/TarjetasDeCredito/app/categorys/deleteCategory', {
+    fetch('/app/categorys/deleteCategory', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -136,14 +138,14 @@ function insertCategory(){
     const data = new FormData();
     data.append('titulo', titulo);
     data.append('informacion', informacion);
-    fetch('http://localhost/TarjetasDeCredito/app/categorys/insertCategory', {
+    fetch('/app/categorys/insertCategory', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
         if(data){
             console.log("OK");
             alert("Categoria Ingresada correctamente!");
-            window.location.replace("http://localhost/TarjetasDeCredito/admin/Categorias/");
+            window.location.replace("/admin/Categorias/");
         }else{
             console.log("error");
         }
