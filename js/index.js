@@ -7,12 +7,15 @@ $(document).ready(function () {
       categorias().then(data => {
         cargarCategorias(data);
         cargarNavCategorias(data, 1);
+        cargarNavCategoriasMobile(data,1);
       });
       emisores().then(data => {
         cargarNavBancosYEmisores(data, 1);
+        cargarBancosYEmioresMobile(data, 1);
       });
       sellos().then(data => {
         cargarNavSellos(data, 1);
+        cargarNavSellosMobile(data, 1);
       });
       break;
     case "/#":
@@ -132,6 +135,26 @@ function cargarNavCategorias(data, cargar = 0){
   }
 }
 
+function cargarNavCategoriasMobile(data, cargar = 0){
+  if(cargar == 1){
+    let contador = 1;
+    let output = ``;
+    for(let i in data) {
+      if(contador <= 4){
+        output += `
+          <li>
+            <a href="#" name="linksCategorias" id='${data[i].id_categoria}' onclick="redirectCategoriaTarjetas(this.id)">
+                <i class="fas fa-money-check-alt"></i>
+                ${data[i].titulo_categoria}
+            </a>
+          </li>
+        `;
+      }
+    }
+    $("#navCategoriasMobile").html(output);
+  }
+}
+
 function cargarNavBancosYEmisores(data, cargar = 0){
   if(cargar == 1){
     let colUnoItems = [1,5,9,13];
@@ -180,6 +203,26 @@ function cargarNavBancosYEmisores(data, cargar = 0){
   }
 }
 
+function cargarBancosYEmioresMobile(data, cargar = 0){
+  if(cargar == 1){
+    let contador = 1;
+    let output = ``;
+    for(let i in data) {
+      if(contador <= 4){
+        output += `
+          <li>
+            <a href="#" name="linksCategorias" id='${data[i].id_emisor}' onclick="redirectEmisoresTarjetas(this.id)">
+                <i class="fas fa-university"></i>
+                ${data[i].nombre}
+            </a>
+          </li>
+        `;
+      }
+    }
+    $("#navEmisoresMobile").html(output);
+  }
+}
+
 function cargarNavSellos(data, cargar = 0){
   if(cargar == 1){
     let colUnoItems = [1,4,7,10];
@@ -216,6 +259,26 @@ function cargarNavSellos(data, cargar = 0){
         break;
       }
     }
+  }
+}
+
+function cargarNavSellosMobile(data, cargar = 0){
+  if(cargar == 1){
+    let contador = 1;
+    let output = ``;
+    for(let i in data) {
+      if(contador <= 4){
+        output += `
+          <li>
+            <a href="#" name="linksCategorias" id='${data[i].id_sello}'>
+                <i class="fas fa-credit-card"></i>
+                ${data[i].nombre}
+            </a>
+          </li>
+        `;
+      }
+    }
+    $("#navSellosMobile").html(output);
   }
 }
 
