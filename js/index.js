@@ -364,7 +364,7 @@ function redirectCategoriaTarjetas(data){
   let result = sessionStorage.getItem('categoria_' + data);
   sessionStorage.setItem('PublicCategoriaCargar', result);
   if(sessionStorage.getItem("PublicCategoriaCargar")){
-    window.location="/category.html";
+    window.location="http://www.tarjetasdecredito.com.uy/category.html";
   }
 }
 
@@ -372,7 +372,7 @@ function redirectEmisoresTarjetas(data){
   let result = sessionStorage.getItem('emisor_' + data);
   sessionStorage.setItem('PublicEmisorCargar', result);
   if(sessionStorage.getItem("PublicEmisorCargar")){
-    window.location="/emisor.html";
+    window.location="http://www.tarjetasdecredito.com.uy/emisor.html";
   }
 }
   /*const handleImageUpload = event => {
