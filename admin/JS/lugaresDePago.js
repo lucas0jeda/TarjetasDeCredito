@@ -63,7 +63,7 @@ function validacion(){
 
 function getAllLugarDePago(){
     try{
-        fetch('/app/lugarDePago/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -89,7 +89,7 @@ function cargarDatosEdicion(idLugarDePago){
     try{
         const data = new FormData();
         data.append('ID', idLugarDePago);
-        fetch('/app/lugarDePago/selectOneLugarDePago', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=selectOneLugarDePago', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -120,7 +120,7 @@ function editLugarDePago(){
         data.append('nombre', nombre);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
-        fetch('/app/lugarDePago/updateLugarDePago', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=updateLugarDePago', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -141,7 +141,7 @@ function editLugarDePago(){
 function deleteLugarDePago(idLugarDePago){
     const data = new FormData();
     data.append('ID', idLugarDePago);
-    fetch('/app/lugarDePago/deleteLugarDePago', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=deleteLugarDePago', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -160,7 +160,7 @@ function insertLugarDePago(){
     let imagen = document.getElementById("imagen").files[0];
     data.append('nombre', nombre);
     data.append('imagen', imagen);
-    fetch('/app/lugarDePago/insertLugarDePago', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=insertLugarDePago', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

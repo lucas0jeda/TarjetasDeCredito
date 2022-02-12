@@ -54,7 +54,7 @@ $(document).ready(function (){
 
 function getAllEmisores(){
     try{
-        fetch('/app/emisores/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -80,7 +80,7 @@ function cargarDatosEdicion(idEmisor){
     try{
         const data = new FormData();
         data.append('ID', idEmisor);
-        fetch('/app/emisores/selectOneEmisores', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=selectOneEmisores', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -114,7 +114,7 @@ function editEmisor(){
         data.append('descripcion', descripcion);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
-        fetch('/app/emisores/updateEmisor', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=updateEmisor', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -134,7 +134,7 @@ function editEmisor(){
 function deleteEmisor(idEmisor){
     const data = new FormData();
     data.append('ID', idEmisor);
-    fetch('/app/emisores/deleteEmisor', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=deleteEmisor', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -155,7 +155,7 @@ function insertEmisor(){
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
     data.append('imagen', imagen);
-    fetch('/app/emisores/insertEmisor', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=insertEmisor', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

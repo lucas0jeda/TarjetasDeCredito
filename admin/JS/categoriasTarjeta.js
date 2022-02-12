@@ -61,7 +61,7 @@ function updateCategoriasTarjeta(){
     try{
         if(idCategoria.length > 0){
             let JsonString = JSON.stringify(idCategoria);
-            fetch('/app/tarjetas/updateCategoriasTarjeta', {
+            fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=updateCategoriasTarjeta', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -84,7 +84,7 @@ function updateCategoriasTarjeta(){
 
 function getAllCategoria(){
     try{
-        fetch('/app/categorys/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 cargarDatos("editar", data);
                 setTimeout(function(){
@@ -101,7 +101,7 @@ function getAllCategoria(){
 
 function getAllCards(){
     try{
-        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -127,7 +127,7 @@ function getCategoriasTarjeta(action){
     let idtarjeta = sessionStorage.getItem('TarjetaCat');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('/app/tarjetas/getCategoriasTarjeta', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=getCategoriasTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

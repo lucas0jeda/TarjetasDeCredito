@@ -11,7 +11,7 @@ document.onreadystatechange = function () {
 function login(formularioLogin){
     try{
         let datos = new FormData(formularioLogin);
-        fetch('/app/admin/login',{
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=admin&action=login',{
             method: "POST",
             body: datos
         }).then(response => response.json()).then(data => {

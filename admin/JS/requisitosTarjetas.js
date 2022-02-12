@@ -91,7 +91,7 @@ function deleteRequisito(){
     let id = $("#id").val();
     let data = new FormData();
     data.append('id', id);
-    fetch('/app/requisitosTarjeta/deleteRequisito', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=requisitosTarjeta&action=deleteRequisito', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -140,7 +140,7 @@ function updateRequisitosTarjetas(){
     data.append('certificado_de_ingresos',certificadoDeIngresos);
     data.append('ingresosMinimos',ingresosMinimos);
     data.append('antiguedad_laboral',antiguedadLaboral);
-    fetch('/app/requisitosTarjeta/updateRequisito', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=requisitosTarjeta&action=updateRequisito', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -155,7 +155,7 @@ function updateRequisitosTarjetas(){
 
 function getAllCards(action){
     try{
-        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -253,7 +253,7 @@ function getRequisitosTarjeta(action){
     let idtarjeta = sessionStorage.getItem('idTarjetaRequisito');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('/app/tarjetas/getRequisitosTarjeta', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=getRequisitosTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -295,7 +295,7 @@ function insertRequisitosTarjetas(){
         data.append('certificado_de_ingresos',certificadoDeIngresos);
         data.append('ingresosMinimos',ingresosMinimos);
         data.append('antiguedad_laboral',antiguedadLaboral);
-        fetch('/app/requisitosTarjeta/insertRequisito', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=requisitosTarjeta&action=insertRequisito', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 function getAllSistemasDePuntos(){
    try{
-      fetch('/app/sistemaDePuntos/all').then(response => response.json()).then(data => {
+      fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sistemaDePuntos&action=all').then(response => response.json()).then(data => {
          if(typeof data === 'object'){
             let output = '';
             for(let i in data){
@@ -71,7 +71,7 @@ function cargarDatosEdicion(id){
    try{
       const data = new FormData();
       data.append('ID', id);
-      fetch('/app/sistemaDePuntos/selectOneSistemaDePuntos', {
+      fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sistemaDePuntos&action=selectOneSistemaDePuntos', {
          method: "POST",
          body: data
       }).then(response => response.json()).then(data => {
@@ -99,7 +99,7 @@ function cargarDatosEdicion(id){
 
 function getAllCards(){
    try{
-      fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+      fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
          if(typeof data === 'object'){
             let output = ``;
             for(let i in data){
@@ -129,7 +129,7 @@ function editSistemaDePuntos(){
    data.append('equivalencia', equivalencia);
    data.append('informacion', informacion);
    data.append('link', link);
-   fetch('/app/sistemaDePuntos/updateSistemaDePuntos', {
+   fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sistemaDePuntos&action=updateSistemaDePuntos', {
       method: "POST",
       body: data
    }).then(response => response.json()).then(data => {
@@ -145,7 +145,7 @@ function editSistemaDePuntos(){
 function deleteSisDePuntos(id){
    let data = new FormData();
    data.append('ID', id);
-   fetch('/app/sistemaDePuntos/deleteSistemaDePuntos', {
+   fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sistemaDePuntos&action=deleteSistemaDePuntos', {
       method: "POST",
       body: data
    }).then(response => response.json()).then(data => {
@@ -171,7 +171,7 @@ function insertSistemaDePuntos(){
    data.append('informacion', informacion);
    data.append('link', link);
    try{
-      fetch('/app/sistemaDePuntos/insertSistemaDePuntos', {
+      fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sistemaDePuntos&action=insertSistemaDePuntos', {
          method: "POST",
          body: data
       }).then(response => response.json()).then(data => {

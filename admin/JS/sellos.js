@@ -43,7 +43,7 @@ $(document).ready(function (){
 
 function getAllSellos(){
     try{
-        fetch('/app/sellos/all')
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=all')
             .then(response => response.json())
             .then(data => {
                 if(typeof data === 'object'){
@@ -71,7 +71,7 @@ function cargarDatosEdicion(idSello){
     try{
         const data = new FormData();
         data.append('ID', idSello);
-        fetch('/app/sellos/selectOneSello', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=selectOneSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -105,7 +105,7 @@ function editSello(){
         data.append('desc', desc);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
-        fetch('/app/sellos/updateSello', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=updateSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -125,7 +125,7 @@ function editSello(){
 function deleteSello(id){
     const data = new FormData();
     data.append('ID', id);
-    fetch('/app/sellos/deleteSello', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=deleteSello', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -146,7 +146,7 @@ function insertSello(){
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
     data.append('imagen', imagen);
-    fetch('/app/sellos/insertSello', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=insertSello', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

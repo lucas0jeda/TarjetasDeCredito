@@ -38,7 +38,7 @@ $(document).ready(function(){
 
 function getAllCards(){
     try{
-        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -64,7 +64,7 @@ function getLugaresDePagoTarjeta(action){
     let idtarjeta = sessionStorage.getItem('lugarDePago');
     const data = new FormData();
     data.append('id_tarjeta', idtarjeta);
-    fetch('/app/tarjetas/getLugaresDePagoTarjeta', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=getLugaresDePagoTarjeta', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -82,7 +82,7 @@ function getLugaresDePagoTarjeta(action){
 function getAllLugaresDePago(){
     // <label class="list-group-item"><input class="form-check-input me-1" type="checkbox" value="">First checkbox</label>
     try{
-        fetch('/app/lugarDePago/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 cargarDatos("editar", data);
                 setTimeout(function(){
@@ -154,7 +154,7 @@ function updateLugaresDePagoTarjetas(){
     try{
         if(idLugares.length > 0){
           let JsonString = JSON.stringify(idLugares);
-            fetch('/app/tarjetas/updateLugaresDePagoTarjeta', {
+            fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=updateLugaresDePagoTarjeta', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

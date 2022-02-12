@@ -62,7 +62,7 @@ function prueba(){
 
 function getAllCards(){
     try{
-        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -89,7 +89,7 @@ function getAllCards(){
 function deleteCard(idCard){
     const data = new FormData();
     data.append('ID', idCard);
-    fetch('/app/tarjetas/deleteCard', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=deleteCard', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -105,7 +105,7 @@ function deleteCard(idCard){
 
 function cargarSelectores(){
     try{
-        fetch('/app/emisores/all').then(response => response.json()).then(emisor => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=all').then(response => response.json()).then(emisor => {
             if(typeof emisor === 'object'){
                 let output = `<option value="" selected disabled>---</option>`;
                 for(let i in emisor){
@@ -116,7 +116,7 @@ function cargarSelectores(){
                 console.log("error");
             }
         });
-        fetch('/app/sellos/all')
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=all')
             .then(response => response.json())
             .then(sellos => {
                 if(typeof sellos === 'object'){
@@ -152,7 +152,7 @@ function cargarDatosEdicion(idTarjeta){
     try{
         const data = new FormData();
         data.append('ID', idTarjeta);
-        fetch('/app/tarjetas/selectOneTarjeta', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=selectOneTarjeta', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -263,7 +263,7 @@ function editTarjeta(){
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
         data.append("imagenActual", imagenActual)
-        fetch('/app/tarjetas/updateCard', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=updateCard', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -341,7 +341,7 @@ function insertCard(){
         data.append('cambio_fecha_de_cierre', cambioFechaDeCierre);
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
-        fetch('/app/tarjetas/insertCard', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=insertCard', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

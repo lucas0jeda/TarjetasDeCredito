@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 function getAllCards(){
     try{
-        fetch('/app/beneficios/selectorBeneficios').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=selectorBeneficios').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = ``;
                 for(let i in data){
@@ -67,7 +67,7 @@ function getAllCards(){
 function deleteBeneficio(idBeneficio){
     const data = new FormData();
     data.append('ID', idBeneficio);
-    fetch('/app/beneficios/deleteBeneficio', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=deleteBeneficio', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -85,7 +85,7 @@ function cargarDatosEdicion(id){
     try{
         const data = new FormData();
         data.append('ID', id);
-        fetch('/app/beneficios/selectOneBeneficio', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=selectOneBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -108,7 +108,7 @@ function cargarDatosEdicion(id){
 
 function getAllBeneficios(){
     try{
-        fetch('/app/beneficios/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -144,7 +144,7 @@ function editBeneficio(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('/app/beneficios/updateBeneficio', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=updateBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -171,7 +171,7 @@ function insertBeneficio(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('/app/beneficios/insertBeneficio', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=beneficios&action=insertBeneficio', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {

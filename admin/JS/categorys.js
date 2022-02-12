@@ -48,7 +48,7 @@ $( document ).ready(function() {
 
 function getAllCategorys(){
     try{
-        fetch('/app/categorys/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
@@ -74,7 +74,7 @@ function cargarDatosEdicion(idCategory){
     try{
         const data = new FormData();
         data.append('ID', idCategory);
-        fetch('/app/categorys/selectOneCategory', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=selectOneCategory', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -100,7 +100,7 @@ function editCategory(){
         data.append('ID', id);
         data.append('titulo', titulo);
         data.append('informacion', informacion);
-        fetch('/app/categorys/updateCategory', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=updateCategory', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -119,7 +119,7 @@ function editCategory(){
 function deleteCategory(idCategory){
     const data = new FormData();
     data.append('ID', idCategory);
-    fetch('/app/categorys/deleteCategory', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=deleteCategory', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -138,7 +138,7 @@ function insertCategory(){
     const data = new FormData();
     data.append('titulo', titulo);
     data.append('informacion', informacion);
-    fetch('/app/categorys/insertCategory', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=insertCategory', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {

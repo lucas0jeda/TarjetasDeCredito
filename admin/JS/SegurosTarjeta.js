@@ -67,7 +67,7 @@ function insertSeguros(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('/app/segurosTarjeta/insertSeguro', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=segurosTarjeta&action=insertSeguro', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -96,7 +96,7 @@ function editSeguro(){
         data.append('titulo', titulo);
         data.append('desc', desc);
         data.append('informacionAdicional', informacionAdicional);
-        fetch('/app/segurosTarjeta/updateSeguro', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=segurosTarjeta&action=updateSeguro', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -117,7 +117,7 @@ function cargarDatosEdicion(id){
     try{
         const data = new FormData();
         data.append('ID', id);
-        fetch('/app/segurosTarjeta/selectOneSeguro', {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=segurosTarjeta&action=selectOneSeguro', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
@@ -141,7 +141,7 @@ function cargarDatosEdicion(id){
 function deleteSeguro(idSeguro){
     const data = new FormData();
     data.append('ID', idSeguro);
-    fetch('/app/segurosTarjeta/deleteSeguro', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=segurosTarjeta&action=deleteSeguro', {
         method: "POST",
         body: data
     }).then(response => response.json()).then(data => {
@@ -156,7 +156,7 @@ function deleteSeguro(idSeguro){
 
 function getAllCards(){
     try{
-        fetch('/app/tarjetas/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = ``;
                 for(let i in data){
@@ -174,7 +174,7 @@ function getAllCards(){
 
 function getAllSeguros(){
     try{
-        fetch('/app/segurosTarjeta/all').then(response => response.json()).then(data => {
+        fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=segurosTarjeta&action=all').then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 let output = '';
                 for(let i in data){
