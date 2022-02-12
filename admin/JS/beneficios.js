@@ -5,7 +5,7 @@ $(document).ready(function() {
         case "/admin/Beneficios/":
             sessionStorage.removeItem("beneficioID");
             $("#addBeneficio").click(function (){
-                window.location.replace("/admin/Beneficios/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Beneficios/crear.html");
             });
             getAllBeneficios();
             break;
@@ -34,7 +34,7 @@ $(document).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('beneficioID',$(this).val());
-            window.location.replace("/admin/Beneficios/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Beneficios/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este beneficio?");
@@ -150,7 +150,7 @@ function editBeneficio(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Beneficio editado con exito!");
-                window.location.replace("/admin/Beneficios/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Beneficios/");
             }else{
                 console.log("error");
             }
@@ -177,7 +177,7 @@ function insertBeneficio(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Beneficio ingresado correctamente!");
-                window.location.replace("/admin/Beneficios/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Beneficios/");
             }else{
                 console.log("error");
             }

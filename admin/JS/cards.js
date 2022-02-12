@@ -5,7 +5,7 @@ $(document).ready(function (){
         case "/admin/Tarjetas/":
             sessionStorage.removeItem("tarjeta");
             $("#addCard").click(function (){
-                window.location.replace("/admin/Tarjetas/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Tarjetas/crear.html");
             });
             getAllCards();
             break;
@@ -44,7 +44,7 @@ $(document).ready(function (){
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('tarjeta',$(this).val());
-            window.location.replace("/admin/Tarjetas/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Tarjetas/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta tarjeta?");
@@ -270,7 +270,7 @@ function editTarjeta(){
             if(data){
                 sessionStorage.removeItem("imagenActual");
                 alert("Tarjeta editada con exito!");
-                window.location.replace("/admin/Tarjetas/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Tarjetas/");
             }else{
                 console.log("error");
             }
@@ -347,7 +347,7 @@ function insertCard(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Tarjeta ingresada con exito!");
-                window.location.replace("/admin/Tarjetas/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Tarjetas/");
             }else{
                 console.log("error");
             }

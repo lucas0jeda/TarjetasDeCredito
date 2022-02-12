@@ -5,7 +5,7 @@ $(document).ready(function (){
         case "/admin/Emisores/":
             sessionStorage.removeItem("emisor");
             $("#addEmisor").click(function (){
-                window.location.replace("/admin/Emisores/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Emisores/crear.html");
             });
             getAllEmisores();
             break;
@@ -40,7 +40,7 @@ $(document).ready(function (){
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('emisor',$(this).val());
-            window.location.replace("/admin/Emisores/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Emisores/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este emisor?");
@@ -121,7 +121,7 @@ function editEmisor(){
             if(data){
                 sessionStorage.removeItem("logoActual");
                 alert("Emisor editado con exito!");
-                window.location.replace("/admin/Emisores/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Emisores/");
             }else{
                 console.log("error");
             }
@@ -161,7 +161,7 @@ function insertEmisor(){
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Emisor ingresado correctamente!");
-            window.location.replace("/admin/Emisores/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Emisores/");
         }else{
             console.log("error");
         }

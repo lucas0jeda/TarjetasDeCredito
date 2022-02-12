@@ -27,11 +27,11 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('TarjetaCat',$(this).val());
-            window.location.replace("/admin/CategoriaTarjetas/detalle.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/CategoriaTarjetas/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('TarjetaCat',$(this).val());
-            window.location.replace("/admin/CategoriaTarjetas/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/CategoriaTarjetas/editar.html");
         });
     }, 2000);
 });

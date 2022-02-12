@@ -26,7 +26,7 @@ $( document ).ready(function() {
         case "/admin/Categorias/":
             sessionStorage.removeItem("category");
             $("#addCategory").click(function (){
-                window.location.replace("/admin/Categorias/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Categorias/crear.html");
             });
             getAllCategorys();
             break;
@@ -35,7 +35,7 @@ $( document ).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('category',$(this).val());
-            window.location.replace("/admin/Categorias/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Categorias/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta categoria?");
@@ -106,7 +106,7 @@ function editCategory(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Categoria editada con exito!");
-                window.location.replace("/admin/Categorias/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Categorias/");
             }else{
                 console.log("error");
             }
@@ -145,7 +145,7 @@ function insertCategory(){
         if(data){
             console.log("OK");
             alert("Categoria Ingresada correctamente!");
-            window.location.replace("/admin/Categorias/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Categorias/");
         }else{
             console.log("error");
         }

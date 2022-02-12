@@ -17,7 +17,7 @@ function login(formularioLogin){
         }).then(response => response.json()).then(data => {
             if(typeof data === 'object'){
                 sessionStorage.setItem('admin',data.usuario);
-                window.location.replace("/admin/dashboard.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/dashboard.html");
             }else{
                 console.log("error");
             }

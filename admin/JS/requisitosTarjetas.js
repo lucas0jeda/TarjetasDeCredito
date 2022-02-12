@@ -6,7 +6,7 @@ $(document).ready(function(){
             sessionStorage.removeItem("idTarjetaRequisito");
             sessionStorage.removeItem("RequisitoTarjetaJson");
             $("#addRequisito").click(function (){
-                window.location.replace("/admin/RequisitosTarjeta/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/crear.html");
             });
             getAllCards("index");
             break;
@@ -78,11 +78,11 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('idTarjetaRequisito',$(this).val());
-            window.location.replace("/admin/RequisitosTarjeta/detalle.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('idTarjetaRequisito',$(this).val());
-            window.location.replace("/admin/RequisitosTarjeta/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/editar.html");
         });
     }, 2000);
 });
@@ -97,7 +97,7 @@ function deleteRequisito(){
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Requisito eliminado con exito!");
-            window.location.replace("/admin/RequisitosTarjeta/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/");
         }else{
             console.log("error");
         }
@@ -146,7 +146,7 @@ function updateRequisitosTarjetas(){
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Requisito editado con exito!");
-            window.location.replace("/admin/RequisitosTarjeta/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/");
         }else{
             console.log("error");
         }
@@ -301,7 +301,7 @@ function insertRequisitosTarjetas(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Requisito ingresado correctamente!");
-                window.location.replace("/admin/RequisitosTarjeta/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/RequisitosTarjeta/");
             }else{
                 console.log("error");
             }

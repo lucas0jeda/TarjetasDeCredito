@@ -5,7 +5,7 @@ $(document).ready(function() {
         case "/admin/SegurosTarjeta/":
             sessionStorage.removeItem("SeguroID");
             $("#addSeguro").click(function (){
-                window.location.replace("/admin/SegurosTarjeta/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SegurosTarjeta/crear.html");
             });
             getAllSeguros();
             break;
@@ -36,7 +36,7 @@ $(document).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('SeguroID',$(this).val());
-            window.location.replace("/admin/SegurosTarjeta/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SegurosTarjeta/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este seguro?");
@@ -73,7 +73,7 @@ function insertSeguros(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Seguro ingresado correctamente!");
-                window.location.replace("/admin/SegurosTarjeta/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SegurosTarjeta/");
             }else{
                 console.log("error");
             }
@@ -102,7 +102,7 @@ function editSeguro(){
         }).then(response => response.json()).then(data => {
             if(data){
                 alert("Seguro editado con exito!");
-                window.location.replace("/admin/SegurosTarjeta/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SegurosTarjeta/");
             }else{
                 console.log("error");
             }

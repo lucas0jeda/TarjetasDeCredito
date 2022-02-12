@@ -27,11 +27,11 @@ $(document).ready(function(){
     setTimeout(function (){
         $(".btnDetalle").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("/admin/LugaresDePagoTarjeta/detalle.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePagoTarjeta/detalle.html");
         });
         $(".btnEditar").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("/admin/LugaresDePagoTarjeta/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePagoTarjeta/editar.html");
         });
     }, 2000);
 });

@@ -5,7 +5,7 @@ $(document).ready(function() {
       case '/admin/SistemaDePuntos/':
          sessionStorage.removeItem("sistemaDePuntosID");
          $("#addSisPuntos").click(function (){
-            window.location.replace("/admin/SistemaDePuntos/crear.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SistemaDePuntos/crear.html");
          });
          getAllSistemasDePuntos();
          break;
@@ -30,7 +30,7 @@ $(document).ready(function() {
    setTimeout(function (){
       $(".btnEditar").click(function (){
          sessionStorage.setItem('sistemaDePuntosID',$(this).val());
-         window.location.replace("/admin/SistemaDePuntos/editar.html");
+         window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SistemaDePuntos/editar.html");
       });
       $(".btnEliminar").click(function (){
          let confirmationDelete = confirm("Estas seguro que deseas eliminar este sistema de puntos?");
@@ -135,7 +135,7 @@ function editSistemaDePuntos(){
    }).then(response => response.json()).then(data => {
       if(data){
          alert("Sistema de puntos editado con exito!");
-         window.location.replace("/admin/SistemaDePuntos/");
+         window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SistemaDePuntos/");
       }else{
          console.log("error");
       }
@@ -177,7 +177,7 @@ function insertSistemaDePuntos(){
       }).then(response => response.json()).then(data => {
          if(data){
             alert("Sistema de puntos ingresado correctamente!");
-            window.location.replace("/admin/SistemaDePuntos/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/SistemaDePuntos/");
          }else{
             console.log("error");
          }

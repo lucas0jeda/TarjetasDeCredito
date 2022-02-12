@@ -5,7 +5,7 @@ $(document).ready(function (){
         case "/admin/Sellos/":
             sessionStorage.removeItem("sello");
            $("#addSello").click(function (){
-                window.location.replace("/admin/Sellos/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Sellos/crear.html");
             });
             getAllSellos();
             break;
@@ -30,7 +30,7 @@ $(document).ready(function (){
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('sello',$(this).val());
-            window.location.replace("/admin/Sellos/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Sellos/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar esta sello?");
@@ -112,7 +112,7 @@ function editSello(){
             if(data){
                 sessionStorage.removeItem("logoActual");
                 alert("Sello editado con exito!");
-                window.location.replace("/admin/Sellos/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Sellos/");
             }else{
                 console.log("error");
             }
@@ -152,7 +152,7 @@ function insertSello(){
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Sello Ingresada correctamente!");
-            window.location.replace("/admin/Sellos/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Sellos/");
         }else{
             console.log("error");
         }

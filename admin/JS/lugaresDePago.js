@@ -31,7 +31,7 @@ $( document ).ready(function() {
         case "/admin/LugaresDePago/":
             sessionStorage.removeItem("lugarDePago");
             $("#addLugarDePago").click(function (){
-                window.location.replace("/admin/LugaresDePago/crear.html");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePago/crear.html");
             });
             getAllLugarDePago();
             break;
@@ -40,7 +40,7 @@ $( document ).ready(function() {
     setTimeout(function (){
         $(".btnEditar").click(function (){
             sessionStorage.setItem('lugarDePago',$(this).val());
-            window.location.replace("/admin/LugaresDePago/editar.html");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePago/editar.html");
         });
         $(".btnEliminar").click(function (){
             let confirmationDelete = confirm("Estas seguro que deseas eliminar este lugar de pago?");
@@ -128,7 +128,7 @@ function editLugarDePago(){
             if(data){
                 sessionStorage.removeItem("logoActual");
                 alert("Lugar de pago editado con exito!");
-                window.location.replace("/admin/LugaresDePago/");
+                window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePago/");
             }else{
                 console.log("error");
             }
@@ -166,7 +166,7 @@ function insertLugarDePago(){
     }).then(response => response.json()).then(data => {
         if(data){
             alert("Lugar de pago ingresado con exito!");
-            window.location.replace("/admin/LugaresDePago/");
+            window.location.replace("http://www.tarjetasdecredito.com.uy/admin/LugaresDePago/");
         }else{
             console.log("error");
         }
