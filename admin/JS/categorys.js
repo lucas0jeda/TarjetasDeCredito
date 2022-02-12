@@ -7,8 +7,8 @@ $( document ).ready(function() {
                 cargarDatosEdicion(sessionStorage.getItem("category"));
                $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    let validacion = validacion();
-                    if(validacion){
+                    let validation = validacion();
+                    if(validation){
                         editCategory();
                     }
                 });
@@ -17,8 +17,8 @@ $( document ).ready(function() {
         case "/admin/Categorias/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                let validacion = validacion();
-                if(validacion){
+                let validation = validacion();
+                if(validation){
                     insertCategory();
                 }
             });
