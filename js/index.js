@@ -285,7 +285,7 @@ function cargarNavSellosMobile(data, cargar = 0){
 
 function categorias(){
     try{
-      return fetch('/app/categorys/all').then(response => response.json());
+      return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=all').then(response => response.json());
     }catch (e) {
       console.log(e);
     }
@@ -293,7 +293,7 @@ function categorias(){
 
 function emisores(){
   try{
-    return fetch('/app/emisores/all').then(response => response.json());
+    return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=all').then(response => response.json());
   }catch (e) {
     console.log(e);
   }
@@ -301,7 +301,7 @@ function emisores(){
 
 function sellos(){
   try{
-    return fetch('/app/sellos/all').then(response => response.json());
+    return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=all').then(response => response.json());
   }catch (e) {
     console.log(e);
   }
@@ -379,7 +379,7 @@ function redirectEmisoresTarjetas(data){
     const files = event.target.files;
     const formData = new FormData();
     formData.append('imagen', files[0])
-    fetch('/app/tarjetas/guardarImagen', {
+    fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=guardarImagen', {
     method: 'POST',
     body: formData
   }).then(response => response.json()).then(data => {
