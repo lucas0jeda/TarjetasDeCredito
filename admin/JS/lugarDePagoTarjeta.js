@@ -164,7 +164,7 @@ function updateLugaresDePagoTarjetas(){
             }).then(response => response.json()).then(data => {
                 if(data){
                     alert('Operacion realizada con exito!');
-                    window.location="/admin/LugaresDePagoTarjeta/";
+                    window.location="http://www.tarjetasdecredito.com.uy/admin/LugaresDePagoTarjeta/";
                 }
             });
         }else{
