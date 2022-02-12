@@ -1,6 +1,6 @@
 $(document).ready(function (){
     let link = window.location.href;
-    const explode = link.split(".com");
+    const explode = link.split(".com.uy");
     switch (explode[1]){
         case "/admin/Tarjetas/":
             sessionStorage.removeItem("tarjeta");
