@@ -29,18 +29,8 @@ class SellosController{
 
     public function updateSello(){
         $sello = new SelloModel();
-        if(isset($_FILES["imagen"])) {
-            if($_POST['logoActual'] != $_FILES["imagen"]['name']){
-                $this->eliminarImagen($_POST['logoActual']);
-                $imagen = $this->guardarImagen($_FILES["imagen"]);
-            }else{
-                $imagen = $_POST['logoActual'];
-            }
-        }else{
-            $imagen = $_POST['logoActual'];
-        }
         if(isset($_POST['ID']) && isset($_POST['nombre']) && isset($_POST['desc'])){
-            $result = $sello->update($_POST['ID'], $_POST['nombre'], $imagen,json_encode($this->SanitizarDatos($_POST['desc'])));
+            $result = $sello->update($_POST['ID'], $_POST['nombre'], 'logo',json_encode($this->SanitizarDatos($_POST['desc'])));
             if($result){
                 exit(json_encode($result));
             }else{
@@ -54,11 +44,6 @@ class SellosController{
     public function deleteSello(){
         $sello = new SelloModel();
         if(isset($_POST['ID'])){
-            $result = $sello->selectOne($_POST['ID']);
-            $imagen = $result->logo;
-            if($imagen != ""){
-                $this->eliminarImagen($imagen);
-            }
             $result = $sello->delete($_POST['ID']);
             if($result){
                 exit(json_encode($result));
@@ -72,12 +57,8 @@ class SellosController{
 
     public function insertSello(){
         $sello = new SelloModel();
-        $imagen = '';
-        if(isset($_FILES["imagen"])){
-            $imagen = $this->guardarImagen($_FILES["imagen"]);
-        }
         if(isset($_POST['nombre']) && isset($_POST['descripcion'])){
-            $result = $sello->insert($_POST['nombre'], $imagen,json_encode($this->SanitizarDatos($_POST['descripcion'])));
+            $result = $sello->insert($_POST['nombre'], 'logo',json_encode($this->SanitizarDatos($_POST['descripcion'])));
             if($result){
                 exit(json_encode($result));
             }else{

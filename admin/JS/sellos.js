@@ -80,9 +80,6 @@ function cargarDatosEdicion(idSello){
                 $("#id").val(data.id_sello);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
-                let src = "/images/sellosImg/" + data.logo;
-                $("#logoSello").attr("src", src);
-                sessionStorage.setItem("logoActual", data.logo);
             }else{
                 console.log("error");
             }
@@ -97,20 +94,15 @@ function editSello(){
         let id = $("#id").val();
         let nombre = $("#nombre").val();
         let desc = $("#descripcion").val();
-        let imagen = document.getElementById("imagen").files[0];
-        let logoActual = sessionStorage.getItem("logoActual");
         const data = new FormData();
         data.append('ID', id);
         data.append('nombre', nombre);
         data.append('desc', desc);
-        data.append('imagen', imagen);
-        data.append("logoActual", logoActual);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=updateSello', {
             method: "POST",
             body: data
         }).then(response => response.json()).then(data => {
             if(data){
-                sessionStorage.removeItem("logoActual");
                 alert("Sello editado con exito!");
                 window.location.replace("http://www.tarjetasdecredito.com.uy/admin/Sellos/");
             }else{
@@ -141,11 +133,9 @@ function deleteSello(id){
 function insertSello(){
     let nombre = $("#nombre").val();
     let descripcion = $("#descripcion").val();
-    let imagen = document.getElementById("imagen").files[0];
     const data = new FormData();
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
-    data.append('imagen', imagen);
     fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=insertSello', {
         method: "POST",
         body: data
