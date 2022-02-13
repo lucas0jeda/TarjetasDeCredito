@@ -95,7 +95,7 @@ class EmisoresController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = __DIR__."/images/emisorImg/logos/".$nombre;
+        $destino = "var/www/tarjetasdecredito.com.uy/html/imagesemisorImg/logos/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }

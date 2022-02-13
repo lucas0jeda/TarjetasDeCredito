@@ -159,7 +159,7 @@ class TarjetasController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = __DIR__."/images/cardsImg/".$nombre;
+        $destino = "/var/www/tarjetasdecredito.com.uy/html/images/images/cardsImg/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }
