@@ -12,8 +12,8 @@ $( document ).ready(function() {
                 })
                 $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    let validacion = validacion();
-                    if(validacion){
+                    let validation =  validacion();
+                    if(validation){
                         editLugarDePago();
                     }
                 });
@@ -22,8 +22,8 @@ $( document ).ready(function() {
        case "/admin/LugaresDePago/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                let validacion = validacion();
-                if(validacion){
+                let validation =  validacion();
+                if(validation){
                     insertLugarDePago();
                 }
             });

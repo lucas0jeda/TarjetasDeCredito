@@ -13,8 +13,8 @@ $(document).ready(function (){
             cargarSelectores();
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                let validacion = validarDatos();
-                if(validacion){
+                let validation =  validarDatos();
+                if(validation){
                     insertCard();
                 }
             });
@@ -32,8 +32,8 @@ $(document).ready(function (){
                 })
                 $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    let validacion = validarDatos();
-                    if(validacion){
+                    let validation =  validarDatos();
+                    if(validation){
                         editTarjeta();
                     }
                 });

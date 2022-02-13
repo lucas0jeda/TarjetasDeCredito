@@ -22,8 +22,8 @@ $(document).ready(function(){
                 getRequisitosTarjeta("editar");
                 $("#btnEnviar").click(function(e){
                     e.preventDefault();
-                    let validacion =  validacion();
-                    if(validacion){
+                    let validation =   validacion();
+                    if(validation){
                         updateRequisitosTarjetas();
                     }
                 });
@@ -43,8 +43,8 @@ $(document).ready(function(){
             getAllCards("crear");
             $("#btnEnviar").click(function(e){
                 e.preventDefault();
-                let validacion = validacion();
-                if(validacion){
+                let validation =  validacion();
+                if(validation){
                     insertRequisitosTarjetas();
                 }
             });

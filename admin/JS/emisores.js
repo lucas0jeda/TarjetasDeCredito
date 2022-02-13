@@ -19,8 +19,8 @@ $(document).ready(function (){
                 cargarDatosEdicion(sessionStorage.getItem("emisor"));
                 $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    let validacion = validacion();
-                    if(validacion){
+                    let validation =  validacion();
+                    if(validation){
                         editEmisor();
                     }
                 });
@@ -29,8 +29,8 @@ $(document).ready(function (){
         case "/admin/Emisores/crear.html":
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                let validacion = validacion();
-                if(validacion){
+                let validation =  validacion();
+                if(validation){
                     insertEmisor();
                 }
             });

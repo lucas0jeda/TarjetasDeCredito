@@ -14,8 +14,8 @@ $(document).ready(function() {
                 cargarDatosEdicion(sessionStorage.getItem("SeguroID"));
                 $("#btnEnviar").click(function (e){
                     e.preventDefault();
-                    let validacion = validacion();
-                    if(validacion){
+                    let validation =  validacion();
+                    if(validation){
                         editSeguro();
                     }
                 });
@@ -25,8 +25,8 @@ $(document).ready(function() {
             getAllCards();
             $("#btnEnviar").click(function (e){
                 e.preventDefault();
-                let validacion = validacion();
-                if(validacion){
+                let validation =  validacion();
+                if(validation){
                     insertSeguros();
                 }
             });
