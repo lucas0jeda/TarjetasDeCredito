@@ -77,7 +77,7 @@ class SellosController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = __DIR__."/sellosImg/".$nombre;
+        $destino = __DIR__."/images/sellosImg/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }

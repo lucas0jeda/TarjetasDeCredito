@@ -94,7 +94,7 @@ class LugarDePagoController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = __DIR__."/lugarDePagoImg/".$nombre;
+        $destino = __DIR__."/images/lugarDePagoImg/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }
