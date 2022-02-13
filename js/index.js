@@ -6,61 +6,103 @@ $(document).ready(function () {
       sessionStorage.clear();
       categorias().then(data => {
         cargarCategorias(data);
-        cargarNavCategorias(data, 1);
-        cargarNavCategoriasMobile(data,1);
+        if(typeof data === 'object') {
+          cargarNavCategorias(data, 1);
+          cargarNavCategoriasMobile(data, 1);
+        }
       });
       emisores().then(data => {
-        cargarNavBancosYEmisores(data, 1);
-        cargarBancosYEmioresMobile(data, 1);
+        if(typeof data === 'object') {
+          cargarNavBancosYEmisores(data, 1);
+          cargarBancosYEmioresMobile(data, 1);
+        }
       });
       sellos().then(data => {
-        cargarNavSellos(data, 1);
-        cargarNavSellosMobile(data, 1);
+        if(typeof data === 'object') {
+          cargarNavSellos(data, 1);
+          cargarNavSellosMobile(data, 1);
+        }
       });
       break;
     case "/#":
       sessionStorage.clear();
       categorias().then(data => {
         cargarCategorias(data);
-        cargarNavCategorias(data, 1);
+        if(typeof data === 'object') {
+          cargarNavCategorias(data, 1);
+          cargarNavCategoriasMobile(data, 1);
+        }
       });
       emisores().then(data => {
-        cargarNavBancosYEmisores(data, 1);
+        if(typeof data === 'object') {
+          cargarNavBancosYEmisores(data, 1);
+          cargarBancosYEmioresMobile(data, 1);
+        }
       });
       sellos().then(data => {
-        cargarNavSellos(data, 1);
+        if(typeof data === 'object') {
+          cargarNavSellos(data, 1);
+          cargarNavSellosMobile(data, 1);
+        }
       });
     case "/category.html":
       categorias().then(data => {
-        cargarNavCategorias(data, 1);
+        if(typeof data === 'object') {
+          cargarNavCategorias(data, 1);
+          cargarNavCategoriasMobile(data, 1);
+        }
       });
       emisores().then(data => {
-        cargarNavBancosYEmisores(data, 1);
+        if(typeof data === 'object') {
+          cargarNavBancosYEmisores(data, 1);
+          cargarBancosYEmioresMobile(data, 1);
+        }
       });
       sellos().then(data => {
-        cargarNavSellos(data, 1);
+        if(typeof data === 'object') {
+          cargarNavSellos(data, 1);
+          cargarNavSellosMobile(data, 1);
+        }
       });
       break;
     case "/emisor.html":
       categorias().then(data => {
-        cargarNavCategorias(data, 1);
+        if(typeof data === 'object') {
+          cargarNavCategorias(data, 1);
+          cargarNavCategoriasMobile(data, 1);
+        }
       });
       emisores().then(data => {
-        cargarNavBancosYEmisores(data, 1);
+        if(typeof data === 'object') {
+          cargarNavBancosYEmisores(data, 1);
+          cargarBancosYEmioresMobile(data, 1);
+        }
       });
       sellos().then(data => {
-        cargarNavSellos(data, 1);
+        if(typeof data === 'object') {
+          cargarNavSellos(data, 1);
+          cargarNavSellosMobile(data, 1);
+        }
       });
       break;
     case "/credit-cards.html":
       categorias().then(data => {
-        cargarNavCategorias(data, 1);
+        if(typeof data === 'object') {
+          cargarNavCategorias(data, 1);
+          cargarNavCategoriasMobile(data, 1);
+        }
       });
       emisores().then(data => {
-        cargarNavBancosYEmisores(data, 1);
+        if(typeof data === 'object') {
+          cargarNavBancosYEmisores(data, 1);
+          cargarBancosYEmioresMobile(data, 1);
+        }
       });
       sellos().then(data => {
-        cargarNavSellos(data, 1);
+        if(typeof data === 'object') {
+          cargarNavSellos(data, 1);
+          cargarNavSellosMobile(data, 1);
+        }
       });
       break;
   }
