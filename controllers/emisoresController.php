@@ -39,7 +39,7 @@ class EmisoresController{
             $imagen = $_POST['logoActual'];
         }
         if(isset($_POST['ID']) && isset($_POST['nombre']) && isset($_POST['descripcion'])){
-            $result = $emisores->update($_POST['ID'], $_POST['nombre'], $imagen ,json_encode($this->SanitizarDatos($_POST['descripcion'])));
+            $result = $emisores->update($_POST['ID'], $_POST['nombre'], $imagen ,json_encode($this->SanitizarDatos($_POST['descripcion'])), $_POST['urlForm']);
             if($result){
                 exit(json_encode($result));
             }else{
@@ -76,7 +76,7 @@ class EmisoresController{
             $imagen = $this->guardarImagen($_FILES["imagen"]);
         }
         if(isset($_POST['nombre']) && isset($_POST['descripcion'])){
-            $result = $emisores->insert($_POST['nombre'], $imagen ,json_encode($this->SanitizarDatos($_POST['descripcion'])));
+            $result = $emisores->insert($_POST['nombre'], $imagen ,json_encode($this->SanitizarDatos($_POST['descripcion'])),$_POST['urlForm']);
             if($result){
                 exit(json_encode($result));
             }else{

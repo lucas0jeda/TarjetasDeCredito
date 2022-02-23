@@ -3,7 +3,6 @@ $(document).ready(function () {
   const explode = link.split(".com.uy");
   switch (explode[1]){
     case "/":
-      sessionStorage.clear();
       categorias().then(data => {
         cargarCategorias(data);
         if(typeof data === 'object') {
@@ -24,27 +23,7 @@ $(document).ready(function () {
         }
       });
       break;
-    case "/#":
-      sessionStorage.clear();
-      categorias().then(data => {
-        cargarCategorias(data);
-        if(typeof data === 'object') {
-          cargarNavCategorias(data, 1);
-          cargarNavCategoriasMobile(data, 1);
-        }
-      });
-      emisores().then(data => {
-        if(typeof data === 'object') {
-          cargarNavBancosYEmisores(data, 1);
-          cargarBancosYEmioresMobile(data, 1);
-        }
-      });
-      sellos().then(data => {
-        if(typeof data === 'object') {
-          cargarNavSellos(data, 1);
-          cargarNavSellosMobile(data, 1);
-        }
-      });
+
     case "/category.html":
       categorias().then(data => {
         if(typeof data === 'object') {
@@ -325,30 +304,6 @@ function cargarNavSellosMobile(data, cargar = 0){
 }
 
 
-function categorias(){
-    try{
-      return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=all').then(response => response.json());
-    }catch (e) {
-      console.log(e);
-    }
-}
-
-function emisores(){
-  try{
-    return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=all').then(response => response.json());
-  }catch (e) {
-    console.log(e);
-  }
-}
-
-function sellos(){
-  try{
-    return fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=sellos&action=all').then(response => response.json());
-  }catch (e) {
-    console.log(e);
-  }
-}
-
 
 function cargarCategorias(data){
   try{
@@ -406,7 +361,7 @@ function redirectCategoriaTarjetas(data){
   let result = sessionStorage.getItem('categoria_' + data);
   sessionStorage.setItem('PublicCategoriaCargar', result);
   if(sessionStorage.getItem("PublicCategoriaCargar")){
-    window.location="http://www.tarjetasdecredito.com.uy/category.html";
+    window.location="../../category.html";
   }
 }
 
@@ -414,7 +369,7 @@ function redirectEmisoresTarjetas(data){
   let result = sessionStorage.getItem('emisor_' + data);
   sessionStorage.setItem('PublicEmisorCargar', result);
   if(sessionStorage.getItem("PublicEmisorCargar")){
-    window.location="http://www.tarjetasdecredito.com.uy/emisor.html";
+    window.location="../../emisor.html";
   }
 }
   /*const handleImageUpload = event => {

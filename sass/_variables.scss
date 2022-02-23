@@ -25,12 +25,12 @@ $zindex-tooltip: 1070 !default;
 
 @font-face {
     font-family: MontSeratLight;
-    src: url(../fonts/montserrat/Montserrat-Light.ttf);
+    src: url(../public/fonts/montserrat/Montserrat-Light.ttf);
 }
 
 @font-face {
     font-family: MontSeratRegular;
-    src: url(../fonts/montserrat/Montserrat-Regular.ttf);
+    src: url(../public/fonts/montserrat/Montserrat-Regular.ttf);
 }
 
 $default-font-family: MontSeratRegular, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

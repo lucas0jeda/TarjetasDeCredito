@@ -16,7 +16,7 @@ class AdminModel{
     }
 
     public function login($user, $pass){
-        $query = "SELECT * FROM Admins WHERE usuario='$user' AND pass='$pass'";
+        $query = "SELECT * FROM admins WHERE usuario='$user' AND pass='$pass'";
         $result = false;
         $login = $this->db->query($query);
         if(mysqli_num_rows($login) == 1 && $login){

@@ -216,7 +216,7 @@
 
 /* credit-cards.html */
 .card-cover-img {
-    background-image: url("../images/emisorImg/banner.jpg");
+    background-image: url("../public/images/emisorImg/banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 280px;
@@ -436,7 +436,7 @@ a.question-circle:hover {
     border-top: 5px solid $primary-color;
 
     .featured-icon {
-        background: url("../images/featured-card.jpg");
+        background: url("../public/images/featured-card.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         color: $white-color;

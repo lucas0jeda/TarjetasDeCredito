@@ -82,6 +82,7 @@ function cargarDatosEdicion(idCategory){
                 $("#id").val(data.id_categoria);
                 $("#titulo_categoria").val(data.titulo_categoria);
                 $("#informacion").val(data.informacion);
+                $("#url").val(data.url);
             }else{
                 console.log("error")
             }
@@ -96,10 +97,13 @@ function editCategory(){
         let id = $("#id").val();
         let titulo = $("#titulo_categoria").val();
         let informacion = $("#informacion").val();
+        let url = $("#url").val();
+        console.log(url);
         const data = new FormData();
         data.append('ID', id);
         data.append('titulo', titulo);
         data.append('informacion', informacion);
+        data.append('urlForm', url);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=updateCategory', {
             method: "POST",
             body: data
@@ -135,9 +139,11 @@ function deleteCategory(idCategory){
 function insertCategory(){
     let titulo = $("#titulo_categoria").val();
     let informacion = $("#informacion").val();
+    let url = $("#url").val();
     const data = new FormData();
     data.append('titulo', titulo);
     data.append('informacion', informacion);
+    data.append('urlForm', url);
     fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=categorys&action=insertCategory', {
         method: "POST",
         body: data
@@ -156,7 +162,8 @@ function validacion(){
     let retorno = false;
     let titulo = $("#titulo_categoria").val();
     let informacion = $("#informacion").val();
-    if(titulo != "" && informacion != ""){
+    let url = $("#url").val();
+    if(titulo != "" && informacion != "" && url != ""){
         retorno = true;
     }
     return retorno;

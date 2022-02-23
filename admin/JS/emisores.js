@@ -89,6 +89,7 @@ function cargarDatosEdicion(idEmisor){
                 $("#id").val(data.id_emisor);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
+                $("#url").val(data.url);
                 let src = "/images/emisorImg/logos/" + data.logo;
                 $("#logoEmisor").attr("src", src);
                 sessionStorage.setItem("logoActual", data.logo);
@@ -106,6 +107,7 @@ function editEmisor(){
         let id = $("#id").val();
         let nombre = $("#nombre").val();
         let descripcion = $("#descripcion").val();
+        let url = $("#url").val();
         let imagen = document.getElementById("imagen").files[0];
         let logoActual = sessionStorage.getItem("logoActual");
         const data = new FormData();
@@ -114,6 +116,7 @@ function editEmisor(){
         data.append('descripcion', descripcion);
         data.append('imagen', imagen);
         data.append("logoActual", logoActual);
+        data.append("urlForm", url);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=updateEmisor', {
             method: "POST",
             body: data
@@ -151,10 +154,12 @@ function insertEmisor(){
     let nombre = $("#nombre").val();
     let descripcion = $("#descripcion").val();
     let imagen = document.getElementById("imagen").files[0];
+    let url = $("#url").val();
     const data = new FormData();
     data.append('nombre', nombre);
     data.append('descripcion', descripcion);
     data.append('imagen', imagen);
+    data.append('urlForm', url);
     fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=emisores&action=insertEmisor', {
         method: "POST",
         body: data
@@ -173,7 +178,8 @@ function validacion(){
     let nombre = $("#nombre").val();
     let descripcion = $("#descripcion").val();
     let imagen = $("#imagen").val();
-    if(nombre != "" && descripcion != "" && imagen != ""){
+    let url = $("#url").val();
+    if(nombre != "" && descripcion != "" && imagen != "" && url != ""){
         retorno = true;
     }
     return retorno;

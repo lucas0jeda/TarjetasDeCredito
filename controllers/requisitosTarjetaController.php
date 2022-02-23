@@ -1,5 +1,5 @@
 <?php
-require_once './models/RequisitosTarjetaModel.php';
+require_once '/models/RequisitosTarjetaModel.php';
 class RequisitosTarjetaController{
 
     public function insertRequisito(){

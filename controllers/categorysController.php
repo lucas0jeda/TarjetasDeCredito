@@ -27,7 +27,7 @@ class CategorysController{
     public function updateCategory(){
         $Categorys = new CategorysModel();
         if(isset($_POST['ID']) && isset($_POST['titulo']) && isset($_POST['informacion'])){
-            $result = $Categorys->update($_POST['ID'], $_POST['titulo'], json_encode($this->SanitizarDatos($_POST['informacion'])));
+             $result = $Categorys->update($_POST['ID'], $_POST['titulo'], json_encode($this->SanitizarDatos($_POST['informacion'])), $_POST['urlForm']);
             if($result){
                 exit(json_encode($result));
             }else{
@@ -55,7 +55,8 @@ class CategorysController{
     public function insertCategory(){
         $Categorys = new CategorysModel();
         if(isset($_POST['titulo']) && isset($_POST['informacion'])){
-            $result = $Categorys->insert($_POST['titulo'],json_encode($this->SanitizarDatos($_POST['informacion'])));
+
+            $result = $Categorys->insert($_POST['titulo'],json_encode($this->SanitizarDatos($_POST['informacion'])), $_POST['urlForm']);
             if($result){
                 exit(json_encode($result));
             }else{

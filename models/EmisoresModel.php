@@ -9,6 +9,7 @@ class EmisoresModel{
     private $nombre;
     private $logo;
     private $descripcion;
+    private $url;
 
     function __construct($args = []){
         $this->db = DataBase::conectarDB();
@@ -16,6 +17,7 @@ class EmisoresModel{
         $this->nombre = $args['nombre'] ?? '';
         $this->logo = $args['logo'] ?? '';
         $this->descripcion = $args['descripcion'] ?? '';
+        $this->url = $args['url'] ?? '';
     }
 
     public function all(){
@@ -38,8 +40,28 @@ class EmisoresModel{
         return $result;
     }
 
-    public function update($id, $nombre, $logo, $descripcion){
-        $query = "UPDATE emisores SET nombre = '${nombre}', descripcion = ${descripcion}, logo = '${logo}' WHERE id_emisor = ${id} ";
+    public function selectOneByTitle($title){
+        $query = "SELECT * FROM emisores WHERE nombre ='$title'";
+        $result = false;
+        $select = $this->db->query($query);
+        if(mysqli_num_rows($select) == 1 && $select){
+            $result = $select->fetch_object();
+        }
+        return $result;
+    }
+
+    public function selectOneByUrl($url){
+        $query = "SELECT * FROM emisores WHERE url ='$url'";
+        $result = false;
+        $select = $this->db->query($query);
+        if(mysqli_num_rows($select) == 1 && $select){
+            $result = $select->fetch_object();
+        }
+        return $result;
+    }
+
+    public function update($id, $nombre, $logo, $descripcion, $url){
+        $query = "UPDATE emisores SET nombre = '${nombre}', url = '${url}', descripcion = ${descripcion}, logo = '${logo}' WHERE id_emisor = ${id} ";
         $result = $this->db->query($query);
         return $result;
     }
@@ -50,8 +72,8 @@ class EmisoresModel{
         return $result;
     }
 
-    public function insert($nombre, $logo ,$descripcion){
-        $query = "INSERT INTO emisores (nombre, logo, descripcion) VALUES ('${nombre}', '${logo}', ${descripcion})";
+    public function insert($nombre, $logo ,$descripcion, $url){
+        $query = "INSERT INTO emisores (nombre, logo, descripcion, url) VALUES ('${nombre}', '${logo}', ${descripcion}, '${url}')";
         $result = $this->db->query($query);
         return $result;
     }

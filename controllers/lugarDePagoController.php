@@ -1,5 +1,5 @@
 <?php
-require_once './models/LugarDePagoModel.php';
+require_once '/models/LugarDePagoModel.php';
 class LugarDePagoController{
 
     public function all(){

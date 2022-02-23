@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/admin/css/admin.css" />
     <title>Nueva Tarjeta</title>
 </head>
@@ -166,11 +166,15 @@
                 <label for="informacion_adicional" class="form-label">Informacion adicional</label>
                 <textarea name="InformacionAdicional" id="informacion_adicional" cols="30" rows="10" class="form-control"></textarea>
             </div>
+            <div class="mb-3">
+                <label for="url" class="form-label">Url *</label>
+                <input class="form-control"   type="text" name="url" id="url" required>
+            </div>
             <button type="submit" id="btnEnviar" class="btn btn-primary form-control">Enviar</button>
         </form>
     </div>
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/admin/JS/layout.js"></script>
     <script type="text/javascript" src="/admin/JS/cards.js"></script>
 </body>

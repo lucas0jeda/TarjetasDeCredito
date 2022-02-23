@@ -142,7 +142,8 @@ function validarDatos(){
     let tipo = $('#tipo').val();
     let uso = $('#uso').val();
     let imagen = $("#imagen").val();
-    if(nombre != '' && emisor != '' && sello != '' && tipo != '' && uso != '', imagen != '') {
+    let url = $("#url").val();
+    if(nombre != '' && emisor != '' && sello != '' && tipo != '' && uso != '', imagen != '',url != '') {
         result = true;
     }
     return result
@@ -186,6 +187,7 @@ function cargarDatosEdicion(idTarjeta){
                 $('#fecha_de_cierre').val(data.fecha_de_cierre);
                 $('#cambio_fecha_de_cierre').val(data.cambio_fecha_de_cierre);
                 $('#informacion_adicional').val(data.informacion_adicional);
+                $('#url').val(data.url);
                 let src = "/images/cardsImg/" + data.imagen;
                 $("#imagenTarjeta").attr("src", src);
                 sessionStorage.setItem("imagenActual", data.imagen);
@@ -231,6 +233,7 @@ function editTarjeta(){
         let informacionAdicional = $('#informacion_adicional').val();
         let imagen = document.getElementById("imagen").files[0];
         let imagenActual = sessionStorage.getItem("imagenActual");
+        let url = $("#url").val();
         const data = new FormData();
         data.append('id_tarjeta', id);
         data.append('nombre', nombre);
@@ -263,6 +266,7 @@ function editTarjeta(){
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
         data.append("imagenActual", imagenActual)
+        data.append('urlForm', url)
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=updateCard', {
             method: "POST",
             body: data
@@ -311,6 +315,7 @@ function insertCard(){
         let cambioFechaDeCierre = $('#cambio_fecha_de_cierre').val();
         let informacionAdicional = $('#informacion_adicional').val();
         let imagen = document.getElementById("imagen").files[0];
+        let url = $('#url').val();
         const data = new FormData();
         data.append('nombre', nombre);
         data.append('id_emisor', idEmisor);
@@ -341,6 +346,7 @@ function insertCard(){
         data.append('cambio_fecha_de_cierre', cambioFechaDeCierre);
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
+        data.append('urlForm', url);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=insertCard', {
             method: "POST",
             body: data
