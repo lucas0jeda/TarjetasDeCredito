@@ -1,4 +1,4 @@
-<?php $cards = $parametros['tarjetas'];  $categorie = $parametros['categoria'];   ?>
+<?php $cards = $parametros['tarjeta'];  $categorie = $parametros['categoria'];   ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +45,8 @@
                                     <img src="./images/cardsImg/<?php echo $card['imagen']; ?>" alt="<?php echo $card['imagen']; ?>" />
                                 </div>
                                 <div class="custom-card-buttons d-none d-md-block">
-                                    <a href="#" class="btn btn-primary">Pedir ahora</a>
-                                    <a href="#" class="btn btn-outline-primary">Mas detalles </a>
+                                    <a href="<?php echo $card['urlpedido']; ?>" class="btn btn-primary">Pedir ahora</a>
+                                    <a href="<?php echo $card['url']; ?>" class="btn btn-outline-primary">Mas detalles </a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-8 col-lg-9 custom-card-info">
@@ -72,8 +72,8 @@
                                 </p> --->
 
                                 <div class="custom-card-buttons d-md-none">
-                                    <a href="#" class="btn btn-primary">Pedir ahora</a>
-                                    <a href="#" class="btn btn-outline-primary">Mas detalles</a>
+                                    <a href="<?php echo $card['urlpedido']; ?>" class="btn btn-primary">Pedir ahora</a>
+                                    <a href="<?php echo $card['url']; ?>" class="btn btn-outline-primary">Mas detalles</a>
                                 </div>
 
                                 <div class="row no-gutters card-features">
@@ -123,56 +123,6 @@
                         </div><!--FIN ROW--->
                     </div>
                 <?php endforeach; ?>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="lbl-bold">What is Chase?</h3>
-                    <p class="xs-font-size">
-                        JPMorgan Chase Bank N.A., or Chase Bank, is a national bank and credit card issuer. That
-                        means the company grants cards to qualifying consumers. It partners with two networks, which
-                        process charges made at retailers. The primary networks are Visa and Mastercard. Most Chase
-                        credit cards are Visa cards, except the IHG Rewards Club Premier, which is a Mastercard.
-                    </p>
-                    <p class="xs-font-size">
-                        Chase credit cards are best known for their generous sign-up bonuses and boosted redemption
-                        travel rewards. In some cases, such as the Sapphire and Freedom cards, products can be
-                        partnered to fully use the Ultimate Rewards portal. A good to excellent credit score is
-                        typically needed for this brand, with its portfolio of business, cashback, travel and
-                        balance transfer products.
-                    </p>
-                    <p class="xs-font-size">
-                        Chase credit cards can be used internationally in most locations. Along with rewards that
-                        come with travel and dining in the U.S., some Chase cards reward you for foreign travel.
-                        Also, in the case of such cards as the Sapphire products, there is no foreign transaction
-                        fee, which applies to both foreign travel and foreign purchases.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="lbl-bold">How many Chase credit cards can I have?</h3>
-                    <p class="xs-font-size">
-                        While in theory there is no limit to the number of Chase cards you can hold, the Chase 5/24
-                        rule requires that you not open more than 5 cards of all issuers in a 24-month period in
-                        order to be approved for a Chase credit card:
-                    </p>
-                    <ul class="xs-font-size">
-                        <li>
-                            IHG Rewards Club Premier Card
-                        </li>
-                        <li>
-                            Disney Rewards Visa
-                        </li>
-                        <li>
-                            Ritz-Carlton Rewards
-                        </li>
-                        <li>
-                            Marriott Rewards Premier Business
-                        </li>
-                    </ul>
-                </div>
             </div>
 
         </div>

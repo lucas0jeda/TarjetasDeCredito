@@ -65,151 +65,38 @@
                 </div>
             </div>
 
-            <!---<div class="recommended-cards-group">
+            <div class="recommended-cards-group">
                 <div class="recommended-cards-title">
-                    <h1>Las 10 tarjetas recomendadas</h1>
+                    <h1>Las tarjetas recomendadas</h1>
                     <p>
                         Éstas son las mejores tarjetas del mercado según diferentes criterios de evaluación.<br />
                     </p>
                 </div>
+                <?php
+                    $tarjetasRecomendadas = $parametros['tarjetas'];
+                    foreach ($tarjetasRecomendadas as $tarjeta):
+                        if($tarjeta['recomendado'] != '0' && $tarjeta['recomendado'] !== null){
 
-                recommended card1
-
+                ?>
                 <div class="recommended-card custom-card">
                     <div class="row">
                         <div class="col-12 col-md-4 col-lg-3 custom-card-image">
-                            <img src="./images/cardsImg/card1.jfif" alt="card1" />
+                            <img src="./images/cardsImg/<?php echo $tarjeta['imagen']; ?>" alt="card1" />
                         </div>
                         <div class="col-12 col-md-8 col-lg-7 custom-card-info">
-                            <h1>American Express Gold Card</h1>
-                            <p class="card-title-hint">
-                                <span>iExcelente!</span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star">
-                                    star_rate
-                                </span>
-                                <span>19 oponioniones</span>
-                            </p>
+                            <h1><?php echo $tarjeta['nombre']; ?></h1>
                             <p class="card-info-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                                labore molestias, voluptatibus perferendis rem provident, fuga
-                                deserunt ab accusamus praesentium <br />quos dolore ratione excepturi
-                                commodi enim non maiores magni odit consectetur voluptas velit
-                                laboriosam!
+                                <?php echo $tarjeta['informacion_adicional']; ?>
                             </p>
                         </div>
                         <div class="col-12 col-md-12 col-lg-2 custom-card-buttons">
-                            <a href="#" class="btn btn-primary">Pedir ahora</a>
-                            <a href="#" class="btn btn-outline-primary">Mas detalles </a>
+                            <a href="<?php echo $tarjeta['urlpedido']; ?>" class="btn btn-primary">Pedir ahora</a>
+                            <a href="<?php echo $tarjeta['url']; ?>" class="btn btn-outline-primary">Mas detalles </a>
                         </div>
                     </div>
                 </div>
-
-                recommended card2
-
-                <div class="recommended-card custom-card">
-                    <div class="row">
-                        <div class="col-12 col-md-4 col-lg-3 custom-card-image">
-                            <img src="./images/cardsImg/card2.jfif" alt="card1" />
-                        </div>
-                        <div class="col-12 col-md-8 col-lg-7 custom-card-info">
-                            <h1>American Express Gold Card</h1>
-                            <p class="card-title-hint">
-                                <span>iExcelente!</span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star">
-                                    star_rate
-                                </span>
-                                <span>19 oponioniones</span>
-                            </p>
-                            <p class="card-info-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                                labore molestias, voluptatibus perferendis rem provident, fuga
-                                deserunt ab accusamus praesentium quos dolore ratione excepturi
-                                commodi enim non maiores magni odit consectetur voluptas velit
-                                laboriosam!
-                            </p>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-2 custom-card-buttons">
-                            <a href="#" class="btn btn-primary">Pedir ahora</a>
-                            <a href="#" class="btn btn-outline-primary">Mas detalles </a>
-                        </div>
-                    </div>
-                </div>
-
-                recommended card3
-
-                <div class="recommended-card custom-card">
-                    <div class="row">
-                        <div class="col-12 col-md-4 col-lg-3 custom-card-image">
-                            <img src="./images/cardsImg/card3.jfif" alt="card1" />
-                        </div>
-                        <div class="col-12 col-md-8 col-lg-7 custom-card-info">
-                            <h1>American Express Gold Card</h1>
-                            <p class="card-title-hint">
-                                <span>iExcelente!</span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span class="material-icons custom-star active-star">
-                                    star_rate
-                                </span>
-                                <span>19 oponioniones</span>
-                            </p>
-                            <p class="card-info-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                                labore molestias, voluptatibus perferendis rem provident, fuga
-                                deserunt ab accusamus praesentium quos dolore ratione excepturi
-                                commodi enim non maiores magni odit consectetur voluptas velit
-                                laboriosam!
-                            </p>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-2 custom-card-buttons">
-                            <a href="#" class="btn btn-primary">Pedir ahora</a>
-                            <a href="#" class="btn btn-outline-primary">Mas detalles </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-align-center">
-                    <a href="#" class="more-cards-link">
-                        Ver todas las tarjetas
-                        <span class="material-icons">
-                            arrow_right_alt
-                        </span>
-                    </a>
-                </div>
-            </div>--->
+                <?php } endforeach; ?>
+            </div>
 
             <div class="we-are-section row">
                 <div class="col-12 col-md-5">

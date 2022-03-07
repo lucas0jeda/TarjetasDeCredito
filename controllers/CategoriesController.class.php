@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__.'/../models/CategorysModel.php';
+require_once __DIR__.'/../models/SelloModel.php';
+require_once __DIR__.'/../models/EmisoresModel.php';
 require_once __DIR__.'/../models/TarjetasModel.php';
 class CategoriesController
 {
@@ -26,9 +28,17 @@ class CategoriesController
         $value = self::getIdCategoriaByTitle($r[1]);
         $tarjeta = new TarjetasModel();
         $result = $tarjeta->getTarjetasCategoria((int) $value);
-        $categoria = new CategorysModel();
-        $categoria = $categoria->selectOne((int) $value);
-        return generarHtml("category", ['tarjetas' => $result, 'categoria' => $categoria]);
+        $categoriaModel = new CategorysModel();
+        $categoria = $categoriaModel->selectOne((int) $value);
+
+        $categories = $categoriaModel->all();
+        $sellosModel = new SelloModel();
+        $sellos = $sellosModel->all();
+        $emisoresModel = new EmisoresModel();
+        $emisores = $emisoresModel->all();
+        $tarjetas = $tarjeta->all();
+
+        return generarHtml("category", ['tarjeta' => $result, 'categoria' => $categoria, 'categories' => $categories, 'sellos' => $sellos,'emisores' => $emisores, 'tarjetas' => $tarjetas]);
 
     }
 }

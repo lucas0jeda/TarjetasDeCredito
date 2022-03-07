@@ -48,15 +48,15 @@
                                     <img src="./images/cardsImg/<?php echo $card['imagen']; ?>" />
                                 </div>
                                 <div class="custom-card-buttons d-none d-md-block">
-                                    <a href="#" class="btn btn-primary">Pedir ahora</a>
-                                    <a href="#" class="btn btn-outline-primary">Mas detalles </a>
+                                    <a href="<?php echo $card['urlpedido']; ?>" class="btn btn-primary">Pedir ahora</a>
+                                    <a href="<?php echo $card['url']; ?>" class="btn btn-outline-primary">Mas detalles </a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-8 col-lg-9 custom-card-info">
                                 <h1><?php echo $card['nombre']; ?></h1>
                                 <div class="custom-card-buttons d-md-none">
                                     <a href="#" class="btn btn-primary">Pedir ahora</a>
-                                    <a href="#" class="btn btn-outline-primary">Mas detalles </a>
+                                    <a href="<?php echo $card['url']; ?>" class="btn btn-outline-primary">Mas detalles </a>
                                 </div>
                                 <div class="row no-gutters card-features">
                                     <div class="col-12 col-md-4 feature">

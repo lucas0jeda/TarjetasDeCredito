@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="col-12 card-apply-section" >
-                    <a href="#" class="btn btn-primary">Pedir Ahora</a>
+                    <a href="<?php echo $card->urlpedido; ?>" class="btn btn-primary">Pedir Ahora</a>
                     <div class="hint">
                         <!--<img src="images/signup-bonuses.svg" width="25" height="25" />
                         ¡Muy elegida por nuestros usuarios!-->
@@ -951,7 +951,6 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/a429ba45aa.js" crossorigin="anonymous"></script>
-<script src="public/js/CardCompleteInformation.js"></script>
 <script src="public/jsndex.js"></script>
 </body>
 

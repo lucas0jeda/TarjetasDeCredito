@@ -77,7 +77,7 @@ class SellosController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = "/var/www/tarjetasdecredito.com.uy/html/images/images/sellosImg/".$nombre;
+        $destino = "images/sellosImg/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }

@@ -188,6 +188,8 @@ function cargarDatosEdicion(idTarjeta){
                 $('#cambio_fecha_de_cierre').val(data.cambio_fecha_de_cierre);
                 $('#informacion_adicional').val(data.informacion_adicional);
                 $('#url').val(data.url);
+                $('#urlpedido').val(data.urlpedido);
+                $('#recomendado').attr("checked", data.recomendado === "1");
                 let src = "/images/cardsImg/" + data.imagen;
                 $("#imagenTarjeta").attr("src", src);
                 sessionStorage.setItem("imagenActual", data.imagen);
@@ -234,6 +236,8 @@ function editTarjeta(){
         let imagen = document.getElementById("imagen").files[0];
         let imagenActual = sessionStorage.getItem("imagenActual");
         let url = $("#url").val();
+        let urlpedido = $("#urlpedido").val();
+        let recomendado = $("#recomendado").is(':checked');
         const data = new FormData();
         data.append('id_tarjeta', id);
         data.append('nombre', nombre);
@@ -267,6 +271,8 @@ function editTarjeta(){
         data.append('imagen', imagen);
         data.append("imagenActual", imagenActual)
         data.append('urlForm', url)
+        data.append('urlpedido', urlpedido);
+        data.append('recomendado', recomendado);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=updateCard', {
             method: "POST",
             body: data
@@ -316,6 +322,8 @@ function insertCard(){
         let informacionAdicional = $('#informacion_adicional').val();
         let imagen = document.getElementById("imagen").files[0];
         let url = $('#url').val();
+        let urlpedido = $('#urlpedido').val();
+        let recomendado = $('#recomendado').is(':checked');
         const data = new FormData();
         data.append('nombre', nombre);
         data.append('id_emisor', idEmisor);
@@ -347,6 +355,8 @@ function insertCard(){
         data.append('informacion_adicional', informacionAdicional);
         data.append('imagen', imagen);
         data.append('urlForm', url);
+        data.append('urlPedido', urlpedido);
+        data.append('recomendado', recomendado);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=tarjetas&action=insertCard', {
             method: "POST",
             body: data

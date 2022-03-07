@@ -1,4 +1,16 @@
-    <!--header-->
+<?php $categoriesHeader = $parametros['categories'];
+$emisoresHeader = $parametros['emisores'];
+$sellosHeader = $parametros['sellos'];
+$tarjetasHeader = $parametros['tarjetas'];
+
+
+$cantidadTarjetas =  count($tarjetasHeader);
+$cantidadEmisores = count($emisoresHeader);
+$cantidadSellos =  count($sellosHeader);
+$cantidad =  count($categoriesHeader);
+
+?>
+<!--header-->
     <header>
         <div class="container">
             <nav class="row no-gutters">
@@ -17,83 +29,38 @@
                             <ul class="sub-menu-columns">
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=0; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $tarjetasHeader[$i]['url']; ?>">
+                                                    <?php echo $tarjetasHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 4): break; endif; } ?>
                                     </ul>
                                 </li>
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=4; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $tarjetasHeader[$i]['url']; ?>">
+                                                    <?php echo $tarjetasHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php if($i === 8): break; endif; } ?>
                                     </ul>
                                 </li>
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=8; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $tarjetasHeader[$i]['url']; ?>">
+                                                    <?php echo $tarjetasHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 12): break; endif; } ?>
                                     </ul>
                                 </li>
                             </ul>
@@ -108,129 +75,87 @@
                             <ul class="sub-menu-columns">
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=0; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                                    <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 4): break; endif; } ?>
                                     </ul>
                                 </li>
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=4; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                                    <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 8): break; endif; } ?>
                                     </ul>
                                 </li>
                                 <li>
                                     <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <ul class="sub-menu-column">
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-credit-card"></i>
-                                                Best Credit Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-visa"></i> Rewards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                Sign-up Bonuses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-money-bill-alt"></i>
-                                                Cash Back
-                                            </a>
-                                        </li>
+                                        <?php
+                                        for($i=8; $i < $cantidad; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                                    <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 12): break; endif; } ?>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li class="menu-item">
                             <a href="#">
-                                Bancos y emosires
+                                Bancos y emisores
                                 <span class="material-icons">
                                         keyboard_arrow_down
                                     </span>
                             </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#">
-                                Ayuda
-                                <span class="material-icons">
-                                        keyboard_arrow_down
-                                    </span>
-                            </a>
+                            <ul class="sub-menu-columns">
+                                <li>
+                                    <ul class="sub-menu-column">
+                                        <?php
+                                        for($i=0; $i < $cantidadEmisores; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                                    <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 4): break; endif; } ?>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="sub-menu-column">
+                                        <?php
+                                        for($i=4; $i < $cantidadEmisores; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                                    <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php if($i === 8): break; endif; } ?>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="sub-menu-column">
+                                        <?php
+                                        for($i=8; $i < $cantidadEmisores; $i++){ ?>
+                                            <li>
+                                                <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                                    <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                                </a>
+                                            </li>
+                                        <?php  if($i === 12): break; endif; } ?>
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -257,31 +182,40 @@
                     Tipo de tarjeta
                 </a>
                 <ul class="drop-down-menu">
-                    <li class="hasSubMenu">
-                        <ul>
-                            <li>
-                                <a>
-                                    <i class="far fa-credit-card"></i>
-                                    Best Credit Cards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-visa"></i> Rewards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    Sign-up Bonuses
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fas fa-money-bill-alt"></i>
-                                    Cash Back
-                                </a>
-                            </li>
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=0; $i < $cantidad; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                        <?php echo $categoriesHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php  if($i === 4): break; endif; } ?>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=4; $i < $cantidad; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                        <?php echo $categoriesHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php  if($i === 8): break; endif; } ?>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=8; $i < $cantidad; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $categoriesHeader[$i]['url']; ?>">
+                                        <?php echo $categoriesHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php if($i === 12): break; endif; } ?>
                         </ul>
                     </li>
                 </ul>
@@ -291,102 +225,91 @@
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     Categorias
                 </a>
-                <ul class="drop-down-menu">
-                    <li class="hasSubMenu">
-                        <ul>
-                            <li>
-                                <a>
-                                    <i class="far fa-credit-card"></i>
-                                    Best Credit Cards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-visa"></i> Rewards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    Sign-up Bonuses
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fas fa-money-bill-alt"></i>
-                                    Cash Back
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <ul class="sub-menu-columns">
+                    <?php   if($cantidad > 0){ ?>
+                        <li>
+                            <ul class="sub-menu-column">
+                                <?php
+                                for($i=0; $i < $cantidad; $i++){ ?>
+                                    <li>
+                                        <a href="#">
+                                            <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                        </a>
+                                    </li>
+                                <?php  if($i === 4): break; endif; } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <?php if($cantidad > 4){ ?>
+                        <li>
+                            <ul class="sub-menu-column">
+                                <?php
+                                for($i=4; $i < $cantidad; $i++){ ?>
+                                    <li>
+                                        <a href="#">
+                                            <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                        </a>
+                                    </li>
+                                <?php   if($i === 8): break; endif; } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <?php if($cantidad > 8){ ?>
+                        <li>
+                            <ul class="sub-menu-column">
+                                <?php
+                                for($i=8; $i < $cantidad; $i++){ ?>
+                                    <li>
+                                        <a href="#">
+                                            <?php echo $categoriesHeader[$i]['titulo_categoria']; ?>
+                                        </a>
+                                    </li>
+                                <?php  if($i === 12): break; endif; } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
                 </ul>
             </li>
             <li>
                 <a class="drop-down-link">
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    Bancos y emosires
+                    Bancos y emisores
                 </a>
-                <ul class="drop-down-menu">
-                    <li class="hasSubMenu">
-                        <ul>
-                            <li>
-                                <a>
-                                    <i class="far fa-credit-card"></i>
-                                    Best Credit Cards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-visa"></i> Rewards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    Sign-up Bonuses
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fas fa-money-bill-alt"></i>
-                                    Cash Back
-                                </a>
-                            </li>
+                <ul class="sub-menu-columns">
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=0; $i < $cantidadEmisores; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                        <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php  if($i === 4): break; endif; } ?>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a class="drop-down-link">
-                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    Ayuda
-                </a>
-                <ul class="drop-down-menu">
-                    <li class="hasSubMenu">
-                        <ul>
-                            <li>
-                                <a>
-                                    <i class="far fa-credit-card"></i>
-                                    Best Credit Cards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-visa"></i> Rewards
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fab fa-cc-mastercard"></i>
-                                    Sign-up Bonuses
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <i class="fas fa-money-bill-alt"></i>
-                                    Cash Back
-                                </a>
-                            </li>
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=4; $i < $cantidadEmisores; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                        <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php  if($i === 8): break; endif; } ?>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="sub-menu-column">
+                            <?php
+                            for($i=8; $i < $cantidadEmisores; $i++){ ?>
+                                <li>
+                                    <a href="<?php echo $emisoresHeader[$i]['url']; ?>">
+                                        <?php echo $emisoresHeader[$i]['nombre']; ?>
+                                    </a>
+                                </li>
+                            <?php if($i === 12): break; endif; } ?>
                         </ul>
                     </li>
                 </ul>

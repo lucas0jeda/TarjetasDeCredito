@@ -39,20 +39,20 @@ class Routes
         }
         // buscar en categories
         $categorias = new categorysModel();
-        $categorias->selectOneByUrl($url);
-        if($categorias){
+        $result = $categorias->selectOneByUrl($url);
+        if($result){
             self::Add($_SERVER['REQUEST_URI'], 'get','CategoriesController::category');
         }
         // buscar en emisores
         $emisores = new EmisoresModel();
-        $emisores->selectOneByTitle($url);
-        if($emisores){
+        $result = $emisores->selectOneByUrl($url);
+        if($result){
             self::Add($_SERVER['REQUEST_URI'], 'get','EmisorController::get');
         }
         // buscar en tarjetas
         $tarjetas = new TarjetasModel();
-        $tarjetas->selectOneByUrl($url);
-        if($tarjetas){
+        $result = $tarjetas->selectOneByUrl($url);
+        if($result){
             self::Add($_SERVER['REQUEST_URI'], 'get','CreditCardsController::get');
         }
 
@@ -88,6 +88,7 @@ class Routes
                 }
             }
         }
+ 
 
         if (self::$notFound) cargarVista("404");
         if ($tipo === "vista")

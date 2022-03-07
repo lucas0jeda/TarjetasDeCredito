@@ -113,12 +113,10 @@ function editLugarDePago(){
     try{
         let id = $("#id").val();
         let nombre = $("#nombre").val();
-        let imagen = document.getElementById("imagen").files[0];
         let logoActual = sessionStorage.getItem("logoActual");
         const data = new FormData();
         data.append('ID', id);
         data.append('nombre', nombre);
-        data.append('imagen', imagen);
         data.append("logoActual", logoActual);
         fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=updateLugarDePago', {
             method: "POST",
@@ -157,9 +155,7 @@ function deleteLugarDePago(idLugarDePago){
 function insertLugarDePago(){
     const data = new FormData();
     let nombre = $("#nombre").val();
-    let imagen = document.getElementById("imagen").files[0];
     data.append('nombre', nombre);
-    data.append('imagen', imagen);
     fetch('http://www.tarjetasdecredito.com.uy/app.php?controller=lugarDePago&action=insertLugarDePago', {
         method: "POST",
         body: data
@@ -177,8 +173,7 @@ function insertLugarDePago(){
 function validacion(){
     let retorno = false;
     let nombre = $("#nombre").val();
-    let imagen = $("#imagen").val();
-    if(nombre != "" && imagen != ""){
+    if(nombre != ""){
         retorno = true;
     }
     return retorno;

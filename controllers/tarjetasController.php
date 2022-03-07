@@ -59,7 +59,39 @@ class TarjetasController{
             $imagen = $_POST['imagenActual'];
         }
         if(isset($_POST['id_tarjeta']) && isset($_POST['nombre']) && isset($_POST['id_sello']) && isset($_POST['id_emisor']) && isset($_POST['tipo']) && isset($_POST['uso'])){
-            $result = $tarjeta->update($_POST['id_tarjeta'], $_POST['nombre'], $_POST['id_sello'], $_POST['id_emisor'], $_POST['tipo'], $_POST['uso'], json_encode($_POST['costo_de_emision']), json_encode($_POST['costo_primer_anio']), json_encode($_POST['costo_renovacion']), json_encode($_POST['costo_adicionales']), json_encode($_POST['comision_compras_exterior']) , json_encode($_POST['pago']), $_POST['cashback'], $_POST['programa_de_puntos'], json_encode($_POST['limite_de_gasto_maximo']), json_encode($_POST['interes_cuotas']), $_POST['cuenta_bancaria'], json_encode($_POST['aumento_de_limite_por_viaje']) , json_encode($_POST['costo_envio_estado_de_cuenta']) , json_encode($_POST['envio_estado_de_cuenta_email']) , json_encode($_POST['adelanto_de_efectivo']) , json_encode($_POST['informacion_adicional']) , $imagen, json_encode($_POST['fecha_de_cierre']) , json_encode($_POST['cambio_fecha_de_cierre']), json_encode($_POST['telefono_para_extravio']) ,$_POST['contactless'], json_encode($_POST['reimpresion_de_plastico']), json_encode($_POST['reimpresion_de_pin']), json_encode($_POST['reemplazo_por_robo_extravio']), $_POST['urlForm']);
+            $result = $tarjeta->update($_POST['id_tarjeta'],
+                $_POST['nombre'],
+                $_POST['id_sello'],
+                $_POST['id_emisor'],
+                $_POST['tipo'],
+                $_POST['uso'],
+                $_POST['costo_de_emision'],
+                $_POST['costo_primer_anio'],
+                $_POST['costo_renovacion'],
+                $_POST['costo_adicionales'],
+                $_POST['comision_compras_exterior'],
+                $_POST['pago'] ,
+                $_POST['cashback'],
+                $_POST['programa_de_puntos'],
+                $_POST['limite_de_gasto_maximo'],
+                $_POST['interes_cuotas'],
+                $_POST['cuenta_bancaria'],
+                $_POST['aumento_de_limite_por_viaje'] ,
+                $_POST['costo_envio_estado_de_cuenta'],
+                $_POST['envio_estado_de_cuenta_email']  ,
+                $_POST['adelanto_de_efectivo']  ,
+                $_POST['informacion_adicional'] ,
+                $imagen,
+                $_POST['fecha_de_cierre']  ,
+                $_POST['cambio_fecha_de_cierre'] ,
+                $_POST['telefono_para_extravio'] ,
+                $_POST['contactless'],
+                $_POST['reimpresion_de_plastico'],
+                $_POST['reimpresion_de_pin'],
+                $_POST['reemplazo_por_robo_extravio'],
+                $_POST['urlForm'],
+                $_POST['urlpedido'],
+                ($_POST['recomendado']=="true" ? 1 : 0));
             if($result){
                 exit(json_encode($result));
             }else{
@@ -78,7 +110,39 @@ class TarjetasController{
         }
         if(isset($_POST['nombre']) && isset($_POST['id_sello']) && isset($_POST['id_emisor']) && isset($_POST['tipo']) && isset($_POST['uso'])){
             // ECODEAR TODOS LOS TEXT AREA. DESARROLLAR METODO DE SANETIZACION DE LOS DATOS.
-            $result = $tarjeta->insert($_POST['nombre'], $_POST['id_sello'],$_POST['id_emisor'], $_POST['tipo'], $_POST['uso'], json_encode($this->SanitizarDatos($_POST['costo_de_emision'])), json_encode($this->SanitizarDatos($_POST['costo_primer_anio'])), json_encode($this->SanitizarDatos($_POST['costo_renovacion'])), json_encode($this->SanitizarDatos($_POST['costo_adicionales'])), json_encode($this->SanitizarDatos($_POST['comision_compras_exterior'])) , json_encode($this->SanitizarDatos($_POST['pago'])), $_POST['cashback'], $_POST['programa_de_puntos'], json_encode($this->SanitizarDatos($_POST['limite_de_gasto_maximo'])), json_encode($this->SanitizarDatos($_POST['interes_cuotas'])), $_POST['cuenta_bancaria'], json_encode($this->SanitizarDatos($_POST['aumento_de_limite_por_viaje'])), json_encode($this->SanitizarDatos($_POST['costo_envio_estado_de_cuenta'])), $_POST['envio_estado_de_cuenta_email'], json_encode($this->SanitizarDatos($_POST['adelanto_de_efectivo'])), json_encode($this->SanitizarDatos($_POST['informacion_adicional'])), $imagen, json_encode($this->SanitizarDatos($_POST['fecha_de_cierre'])), json_encode($this->SanitizarDatos($_POST['cambio_fecha_de_cierre'])), json_encode($this->SanitizarDatos($_POST['telefono_para_extravio'])), $_POST['contactless'], json_encode($this->SanitizarDatos($_POST['reimpresion_de_plastico'])), json_encode($this->SanitizarDatos($_POST['reimpresion_de_pin'])), json_encode($this->SanitizarDatos($_POST['reemplazo_por_robo_extravio'])), $_POST['urlForm']);
+            $result = $tarjeta->insert(
+                $_POST['nombre'] ?? '',
+                $_POST['id_sello'] ?? '',
+                $_POST['id_emisor']?? '',
+                $_POST['tipo']?? '',
+                $_POST['uso']?? '',
+                $this->SanitizarDatos($_POST['costo_de_emision'])?? '',
+                $this->SanitizarDatos($_POST['costo_primer_anio'])?? '',
+                ($this->SanitizarDatos($_POST['costo_renovacion']))?? '',
+                ($this->SanitizarDatos($_POST['costo_adicionales']))?? '',
+                ($this->SanitizarDatos($_POST['comision_compras_exterior'])) ?? '',
+                ($this->SanitizarDatos($_POST['pago']))?? '',
+                $_POST['cashback']?? '',
+                $_POST['programa_de_puntos']?? '',
+                ($this->SanitizarDatos($_POST['limite_de_gasto_maximo']))?? '',
+                ($this->SanitizarDatos($_POST['interes_cuotas']))?? '',
+                $_POST['cuenta_bancaria']?? '',
+                ($this->SanitizarDatos($_POST['aumento_de_limite_por_viaje']))?? '',
+                ($this->SanitizarDatos($_POST['costo_envio_estado_de_cuenta']))?? '',
+                $_POST['envio_estado_de_cuenta_email']?? '',
+                ($this->SanitizarDatos($_POST['adelanto_de_efectivo']))?? '',
+                ($this->SanitizarDatos($_POST['informacion_adicional']))?? '',
+                $imagen?? '',
+                ($this->SanitizarDatos($_POST['fecha_de_cierre']))?? '',
+                ($this->SanitizarDatos($_POST['cambio_fecha_de_cierre']))?? '',
+                ($this->SanitizarDatos($_POST['telefono_para_extravio']))?? '',
+                $_POST['contactless']?? '',
+                ($this->SanitizarDatos($_POST['reimpresion_de_plastico']))?? '',
+                ($this->SanitizarDatos($_POST['reimpresion_de_pin']))?? '',
+                ($this->SanitizarDatos($_POST['reemplazo_por_robo_extravio']))?? '',
+                $_POST['urlForm']?? '',
+                $_POST['urlpedido']?? '',
+                ($_POST['recomendado']=="true" ? 1 : 0));
             if($result){
                 exit(json_encode($result));
             }else{
@@ -159,7 +223,7 @@ class TarjetasController{
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = "/var/www/tarjetasdecredito.com.uy/html/images/images/cardsImg/".$nombre;
+        $destino = "/var/www/tarjetasdecredito.com.uy/html/images/cardsImg/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }

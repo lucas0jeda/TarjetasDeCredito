@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__.'/../models/CategorysModel.php';
+require_once __DIR__.'/../models/SelloModel.php';
+require_once __DIR__.'/../models/EmisoresModel.php';
 require_once __DIR__.'/../models/TarjetasModel.php';
 
 class CreditCardsController{
@@ -19,6 +22,7 @@ class CreditCardsController{
     public function get(){
         $r = $_SERVER['REQUEST_URI'];
         $r = explode('/', $r);
+   
         if(!isset($r[1])){
             header('Location: /');
             die();
@@ -28,7 +32,16 @@ class CreditCardsController{
         $card = $tarjetaInstance->selectOne((int) $value);
         $moreInformation = $tarjetaInstance->selectCompleteInformation((int) $value);
         $card->MoreInformation = $moreInformation;
-        return generarHtml("credit-cards", ['card' => $card]);
+
+        $categoriesModel = new CategorysModel();
+        $categories = $categoriesModel->all();
+        $sellosModel = new SelloModel();
+        $sellos = $sellosModel->all();
+        $emisoresModel = new EmisoresModel();
+        $emisores = $emisoresModel->all();
+        $tarjetasModel = new TarjetasModel();
+        $tarjetas = $tarjetasModel->all();
+        return generarHtml("credit-cards", ['card' => $card, 'categories' => $categories, 'sellos' => $sellos,'emisores' => $emisores, 'tarjetas' => $tarjetas]);
     }
 
 

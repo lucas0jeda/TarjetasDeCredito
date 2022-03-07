@@ -88,14 +88,14 @@ class EmisoresController{
     }
 
     private function eliminarImagen($imagenData){
-        unlink('/images/emisorImg/logos/'.$imagenData);
+        unlink('images/emisorImg/logos/'.$imagenData);
     }
 
     private function guardarImagen($imagenData){
         $imagen = $imagenData;
         $nombre = $this->formatearNombres($imagen['name']);
         $nombreTmp = $imagen["tmp_name"];
-        $destino = "var/www/tarjetasdecredito.com.uy/html/imagesemisorImg/logos/".$nombre;
+        $destino = "images/emisorImg/logos/".$nombre;
         move_uploaded_file($nombreTmp, $destino);
         return $nombre;
     }
